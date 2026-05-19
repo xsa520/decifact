@@ -1,0 +1,30 @@
+{
+  "decision_a": {
+    "intent": {
+      "action": "approve"
+    },
+    "target": {
+      "resource": "invoice-123"
+    },
+    "parameters": {
+      "threshold": 0.9
+    },
+    "policy_fields": {
+      "policy_version": "v1"
+    }
+  },
+  "decision_b": {
+    "intent": {
+      "action": "reject"
+    },
+    "target": {
+      "resource": "invoice-123"
+    },
+    "parameters": {
+      "threshold": 0.9
+    },
+    "policy_fields": {
+      "policy_version": "v1"
+    }
+  }
+}

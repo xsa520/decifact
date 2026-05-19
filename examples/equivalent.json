@@ -1,0 +1,44 @@
+{
+  "decision_a": {
+    "intent": {
+      "action": "approve",
+      "actor": "system"
+    },
+    "target": {
+      "resource": "invoice-123",
+      "type": "invoice"
+    },
+    "parameters": {
+      "currency": "USD",
+      "threshold": 0.9
+    },
+    "policy_fields": {
+      "policy_version": "v1",
+      "jurisdiction": "US"
+    },
+    "metadata": {
+      "request_id": "aaa"
+    }
+  },
+  "decision_b": {
+    "metadata": {
+      "request_id": "bbb"
+    },
+    "policy_fields": {
+      "jurisdiction": "US",
+      "policy_version": "v1"
+    },
+    "parameters": {
+      "threshold": 0.9,
+      "currency": "USD"
+    },
+    "target": {
+      "type": "invoice",
+      "resource": "invoice-123"
+    },
+    "intent": {
+      "actor": "system",
+      "action": "approve"
+    }
+  }
+}
