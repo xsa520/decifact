@@ -1,3 +1,6 @@
+Decifact does not determine authority.
+It exposes comparability boundaries.
+
 # Decifact
 
 Decision equivalence based on invariant boundaries.
