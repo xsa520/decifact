@@ -262,3 +262,9 @@ Stable for equivalence verification in controlled environments.
 Deployed instances processing live decisions since 2026-01.
 
 Operational substrate: Alpha System — running since 2026-02-11, RFC3161 evidence chain, 77+ replay cycles. Internal only.
+
+---
+
+## Explainer
+
+See: [decifact-explainer.pdf](decifact-explainer.pdf)
