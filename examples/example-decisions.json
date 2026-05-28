@@ -1,0 +1,34 @@
+{
+  "meta": {
+    "description": "Two independently governed systems. Both approved the same action. Governance conditions are NOT equivalent.",
+    "note": "This is a minimal existence proof for Decifact /compare endpoint."
+  },
+  "decision_a": {
+    "system_id": "system-alpha",
+    "governance_regime": "jurisdiction-EU",
+    "decision_object": "approve-data-transfer-request-7821",
+    "outcome": "approved",
+    "authority_source": "policy-v3.2-signed-2026-01-15",
+    "authority_freshness_seconds": 180,
+    "evidence_chain": "RFC3161-anchored",
+    "rollback_viable": true,
+    "undeclared_dependency": false,
+    "policy_hash": "sha256:a3f1c9e2b7d4081f56ae34c8d9012bfe",
+    "context_snapshot_hash": "sha256:9c1d83a7e2f041b6c5de78f012345abc",
+    "timestamp": "2026-05-28T08:00:00Z"
+  },
+  "decision_b": {
+    "system_id": "system-beta",
+    "governance_regime": "jurisdiction-APAC",
+    "decision_object": "approve-data-transfer-request-7821",
+    "outcome": "approved",
+    "authority_source": "policy-v2.8-signed-2025-09-03",
+    "authority_freshness_seconds": 14400,
+    "evidence_chain": "internal-log-only",
+    "rollback_viable": false,
+    "undeclared_dependency": true,
+    "policy_hash": "sha256:b7e2d1f4a9c3078e12bd56a7e890fedc",
+    "context_snapshot_hash": "sha256:2a4f97b1c0e3d85f9a12678bc3456def",
+    "timestamp": "2026-05-28T08:01:14Z"
+  }
+}
