@@ -267,4 +267,4 @@ Operational substrate: Alpha System — running since 2026-02-11, RFC3161 eviden
 
 ## Explainer
 
-See: [decifact-explainer.pdf](decifact-explainer.pdf)
+See: [docs/decifact-explainer.pdf](docs/decifact-explainer.pdf)
