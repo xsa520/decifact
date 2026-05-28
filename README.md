@@ -3,24 +3,82 @@ It exposes comparability boundaries.
 
 # Decifact
 
-Decision equivalence based on invariant boundaries.
+**Cross-system decision equivalence based on invariant boundaries.**
 
 Built on Guardian v0.2 — Decision Equivalence Specification.
 
 ---
 
+## The Seam This Addresses
+
+Most AI governance work focuses on a single system:
+- Does this agent behave correctly?
+- Is this decision auditable?
+- Does this output comply with policy?
+
+These are necessary questions. But they leave a deeper problem unaddressed.
+
+**When independently governed systems begin coordinating — sharing decisions, delegating authority, producing joint consequences — a prior question must be answered first:**
+
+> Were the governance conditions across these systems ever established as comparable before their outputs began creating shared institutional dependencies?
+
+This is not a runtime enforcement problem. It is a precondition problem.
+
+Without comparability verification at this layer, coordination proceeds on assumptions that may never have been valid. Operational success can be mistaken for structural resilience. The gap widens unnoticed until the cost of closure is prohibitive.
+
+Decifact is the minimal inspectable surface for this layer.
+
+---
+
 ## The Problem
 
-When two AI agents process the same input and produce different decisions, most systems cannot answer:
+When two independently governed AI systems process the same input and produce different decisions, most systems cannot answer:
 
 - Are these decisions actually different?
 - If so, where exactly do they diverge?
 - Is the divergence structurally significant, or just representational noise?
+- Were the governance conditions under which each decision was made ever canonically comparable?
 
 Without a standard for decision equivalence, cross-system coordination is undefined.
 
 > "Without decision equivalence, economic correctness is undefined."
 > — Guardian v0.2 Specification
+
+> "The canonical boundary must exist before layer instantiation."
+> — Guardian Constitutional Invariant
+
+---
+
+## Where Decifact Sits
+
+```
+┌─────────────────────────────────────────────────────────┐
+│  Independently Governed System A                        │
+│  (its own policy, authority, execution environment)     │
+└──────────────────────┬──────────────────────────────────┘
+                       │
+                       ▼
+┌─────────────────────────────────────────────────────────┐
+│  DECIFACT — Comparability Boundary Layer                │
+│                                                         │
+│  "Were these decisions produced under governance        │
+│   conditions that were ever canonically comparable?"    │
+│                                                         │
+│  /verify-equivalence  /canonicalize  /compare           │
+└──────────────────────┬──────────────────────────────────┘
+                       │
+                       ▼
+┌─────────────────────────────────────────────────────────┐
+│  Independently Governed System B                        │
+│  (its own policy, authority, execution environment)     │
+└─────────────────────────────────────────────────────────┘
+```
+
+Decifact does not govern either system.
+It does not transfer authority between them.
+It exposes whether their decisions share the invariant boundary required for meaningful coordination.
+
+**This question must be answered before coordination begins — not after consequences have already formed.**
 
 ---
 
@@ -32,6 +90,17 @@ Determines whether two decisions share the same **invariant boundary** — the m
 - **Transparent**: differences are explicit, not opaque
 - **Minimal**: no LLM calls, no external dependencies
 - **Composable**: works alongside any agent framework
+- **Independent**: sits outside the systems it evaluates — no shared write domain, no equity in either system
+
+---
+
+## Endpoints
+
+| Endpoint | Function |
+|----------|----------|
+| `POST /verify-equivalence` | Decision equivalence verification |
+| `POST /canonicalize` | Canonical boundary engine |
+| `POST /compare` | Cross-runtime fracture inspection |
 
 ---
 
@@ -128,6 +197,7 @@ The following MUST NOT be used to determine equivalence:
 | `outcome_a == outcome_b` | Same outcome can come from different decisions |
 | `hash(serialized_a) == hash(serialized_b)` | Structural equality ≠ semantic equivalence |
 | `identity_a == identity_b` | Same actor can produce non-equivalent decisions |
+| `both_passed_audit == true` | Independent audit results ≠ cross-system comparability |
 
 ---
 
@@ -161,6 +231,8 @@ This engine evaluates **decision equivalence only** (Guardian v0.2).
 | Decision acceptance | ❌ Guardian v0.3 (upcoming) |
 | Execution correctness | ❌ Out of scope |
 | Identity validation | ❌ Out of scope |
+| Runtime policy enforcement | ❌ Out of scope — that is a different layer |
+| Governance of either system | ❌ Out of scope — Decifact sits between systems, not inside them |
 
 Equivalence determines whether two decisions are the same decision.
 
@@ -168,11 +240,15 @@ Acceptance determines whether a decision is valid within a context.
 
 These concerns MUST remain strictly separated.
 
+**Decifact does not tell systems what to do. It exposes whether they were ever comparable enough for coordination to be meaningful.**
+
 ---
 
 ## Relation to Guardian
 
 Decifact is the reference implementation of Guardian v0.2 Decision Equivalence Specification.
+
+Guardian defines the constitutional conditions under which independently governed systems can determine whether their decisions remain canonically comparable without inheriting each other's jurisdiction.
 
 Guardian v0.3 (acceptance layer) will build on this equivalence primitive.
 
@@ -184,3 +260,5 @@ Specification: [xsa520/guardian](https://github.com/xsa520/guardian)
 
 Stable for equivalence verification in controlled environments.
 Deployed instances processing live decisions since 2026-01.
+
+Operational substrate: Alpha System — running since 2026-02-11, RFC3161 evidence chain, 77+ replay cycles. Internal only.
