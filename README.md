@@ -268,3 +268,13 @@ Operational substrate: Alpha System — running since 2026-02-11, RFC3161 eviden
 ## Explainer
 
 See: [docs/decifact-explainer.pdf](docs/decifact-explainer.pdf)
+
+---
+
+## Examples
+
+Run the minimal comparability demo:
+
+    python3 examples/verify_demo.py examples/example-decisions.json
+
+See: [examples/verify_demo.py](examples/verify_demo.py)
