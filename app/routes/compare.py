@@ -29,6 +29,12 @@ def _build_fracture_boundary(
 ) -> list[str]:
     fracture_boundary: list[str] = []
 
+    # Phase 1 proxy: policy_reference equality as shared canonical reference check.
+    # TODO: replace with reference translation admissibility check (Phase 2)
+    # when schema supports canonical_reference and accepts_external_comparison fields.
+    if authority_a.policy_reference != authority_b.policy_reference:
+        fracture_boundary.append("no_shared_canonical_reference")
+
     if canonical_hash_a != canonical_hash_b:
         fracture_boundary.append("decision_object_divergence")
 
@@ -45,6 +51,19 @@ def _build_fracture_boundary(
         fracture_boundary.append("acceptance_context_mismatch")
 
     return fracture_boundary
+
+
+def _classify_comparability(fracture_boundary: list[str]) -> str:
+    # Phase 1: classification based on policy_reference proxy.
+    # FORMALLY_INCOMPARABLE: no shared canonical reference detected.
+    # REQUIRES_REFERENCE_TRANSLATION: reserved for Phase 2 when
+    #   translation path detection is implemented.
+    # TODO: extend to REQUIRES_REFERENCE_TRANSLATION in Phase 2.
+    if "no_shared_canonical_reference" in fracture_boundary:
+        return "FORMALLY_INCOMPARABLE"
+    if fracture_boundary:
+        return "NON_EQUIVALENT"
+    return "EQUIVALENT"
 
 
 @router.post("/compare")
@@ -66,7 +85,10 @@ def compare(payload: CompareRequest) -> dict:
         payload.runtime_b.authority_context,
     )
 
+    comparability_classification = _classify_comparability(fracture_boundary)
+
     return {
+        "comparability_classification": comparability_classification,
         "canonical_equivalent": canonical_hash_a == canonical_hash_b,
         "governance_equivalent": (
             boundary_context_hash_a == boundary_context_hash_b
