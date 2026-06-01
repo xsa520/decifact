@@ -100,7 +100,40 @@ Determines whether two decisions share the same **invariant boundary** — the m
 |----------|----------|
 | `POST /verify-equivalence` | Decision equivalence verification |
 | `POST /canonicalize` | Canonical boundary engine |
-| `POST /compare` | Cross-runtime fracture inspection |
+| `POST /compare` | Cross-runtime fracture inspection with comparability classification |
+
+---
+
+## Comparability Classification
+
+Decifact treats comparability as a condition that must be established
+before equivalence can be evaluated.
+
+`/compare` returns one of three classifications:
+
+**`EQUIVALENT`**
+A shared comparison basis exists and governance conditions are identical.
+
+**`NON_EQUIVALENT`**
+A shared comparison basis exists, but governance conditions differ.
+The comparison is valid; the result is disagreement.
+
+**`FORMALLY_INCOMPARABLE`**
+No shared comparison basis was detected.
+The systems may each be internally valid, but comparison cannot
+produce a meaningful equivalence finding.
+This is a first-class result, not an error condition.
+
+> Two systems can each have valid governance records and still be
+> operating on incommensurable decision logic. That is not a
+> deployment problem. It is a proof problem.
+
+Current releases use `policy_reference` equality as a Phase 1 proxy
+for shared canonical reference detection. This proxy is intentionally
+conservative and may classify some translatable governance frameworks
+as formally incomparable until reference translation mechanisms are
+introduced. Future releases will extend this with reference translation
+admissibility and authority translation mechanisms (Guardian v0.3).
 
 ---
 
@@ -186,6 +219,33 @@ curl -X POST https://<your-endpoint>/verify-equivalence \
 }
 ```
 
+### Response — Formally Incomparable (Cross-Jurisdiction Example)
+
+Two independently governed ministries, each with valid governance
+records but operating under different policy foundations:
+
+```json
+{
+  "comparability_classification": "FORMALLY_INCOMPARABLE",
+  "canonical_equivalent": false,
+  "governance_equivalent": false,
+  "fracture_boundary": [
+    "no_shared_canonical_reference"
+  ],
+  "canonical_hash_a": "e2a9f1...",
+  "canonical_hash_b": "c4b7d3...",
+  "boundary_context_hash_a": "f1e3a2...",
+  "boundary_context_hash_b": "d9c1b4...",
+  "replayable": true,
+  "sovereignty_principle": "canonical boundary must exist before layer instantiation"
+}
+```
+
+`FORMALLY_INCOMPARABLE` means: these systems cannot be placed on
+the same comparison reference without one jurisdiction inheriting
+the other's authority assumptions. The finding is structural,
+not a disagreement about outcomes.
+
 ---
 
 ## What Is NOT Equivalence
@@ -223,10 +283,11 @@ def check_equivalence(decision_a, decision_b):
 
 ## Scope
 
-This engine evaluates **decision equivalence only** (Guardian v0.2).
+This engine evaluates **decision comparability and equivalence** (Guardian v0.2).
 
 | Concern | Scope |
 |---------|-------|
+| Comparability classification | ✅ This engine |
 | Decision equivalence | ✅ This engine |
 | Decision acceptance | ❌ Guardian v0.3 (upcoming) |
 | Execution correctness | ❌ Out of scope |
@@ -234,9 +295,13 @@ This engine evaluates **decision equivalence only** (Guardian v0.2).
 | Runtime policy enforcement | ❌ Out of scope — that is a different layer |
 | Governance of either system | ❌ Out of scope — Decifact sits between systems, not inside them |
 
+Comparability determines whether two decisions can be meaningfully compared.
+
 Equivalence determines whether two decisions are the same decision.
 
 Acceptance determines whether a decision is valid within a context.
+
+Comparability precedes equivalence. Equivalence precedes acceptance.
 
 These concerns MUST remain strictly separated.
 
