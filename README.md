@@ -82,6 +82,36 @@ It exposes whether their decisions share the invariant boundary required for mea
 
 ---
 
+### Governance Object
+
+The governance decision artifact is the unit of comparison.
+
+Decifact evaluates governance decisions, not model outputs.
+
+The object under comparison consists of:
+
+* The governance decision artifact
+* Its authority context
+* Its policy foundation
+* Its execution boundary
+
+Decifact does not compare:
+
+* Systems
+* Institutions
+* Model responses
+* Agent outputs
+* Runtime execution results
+* Business outcomes
+
+Decifact evaluates whether two governance decisions were established against a canonically comparable reference before coordination occurs.
+
+The purpose is not to determine which system is correct.
+
+The purpose is to determine whether the decisions were ever established on a comparison basis that makes equivalence evaluation meaningful.
+
+---
+
 ## What This Does
 
 Determines whether two decisions share the same **invariant boundary** — the minimal semantic set that defines a decision, independent of execution artifacts, transport encoding, or system-specific representation.
@@ -134,6 +164,87 @@ conservative and may classify some translatable governance frameworks
 as formally incomparable until reference translation mechanisms are
 introduced. Future releases will extend this with reference translation
 admissibility and authority translation mechanisms (Guardian v0.3).
+
+---
+
+## Cross-Ministry Example
+
+The following example illustrates a governance comparison between two independently governed ministries evaluating deployment of the same AI capability under different policy foundations.
+
+### Ministry A — Health Ministry
+
+```json
+{
+  "runtime_a": {
+    "decision": {
+      "intent": "deploy_ai_system",
+      "target": "patient_triage_module",
+      "mandate_scope": "acute_care",
+      "policy_context": "UK-AI-Framework-v1"
+    },
+    "authority_context": {
+      "authority_domain": "UK-Health-Ministry",
+      "policy_reference": "UK-AI-Framework-v1",
+      "execution_context": "acute-care-deployment",
+      "admissibility_scope": "clinical-decision-support"
+    }
+  }
+}
+```
+
+### Ministry B — Interior Ministry
+
+```json
+{
+  "runtime_b": {
+    "decision": {
+      "intent": "deploy_ai_system",
+      "target": "patient_triage_module",
+      "mandate_scope": "acute_care",
+      "policy_context": "UAE-AI-Framework-v2026"
+    },
+    "authority_context": {
+      "authority_domain": "UAE-Interior-Ministry",
+      "policy_reference": "UAE-AI-Framework-v2026",
+      "execution_context": "acute-care-deployment",
+      "admissibility_scope": "clinical-oversight"
+    }
+  }
+}
+```
+
+### Why This Matters
+
+Both ministries may possess valid governance records.
+
+Both may have independently approved deployment.
+
+Both may have completed internal audit and compliance review.
+
+The question Decifact evaluates is not:
+
+> Which ministry is correct?
+
+The question is:
+
+> Were these governance decisions ever established on a canonically comparable reference before coordination began?
+
+If no shared canonical reference exists, Decifact returns:
+
+```json
+{
+  "comparability_classification": "FORMALLY_INCOMPARABLE",
+  "fracture_boundary": [
+    "no_shared_canonical_reference"
+  ]
+}
+```
+
+This is a first-class governance finding.
+
+The result does not indicate failure, disagreement, or policy violation.
+
+It indicates that the systems cannot be placed on the same comparison basis without one jurisdiction inheriting the authority assumptions of the other.
 
 ---
 
