@@ -82,6 +82,36 @@ It exposes whether their decisions share the invariant boundary required for mea
 
 ---
 
+## Interoperability Is Not Comparability
+
+Interoperability tells you data was exchanged.
+Comparability tells you whether the governance conditions 
+behind that exchange were ever established on a canonically 
+comparable basis.
+
+Most interoperability protocols establish transport.
+Decifact evaluates whether independently governed systems
+were ever established on a canonically comparable basis
+before coordination begins.
+
+These are different questions.
+Answering the first does not answer the second.
+
+Two systems may successfully exchange governance records.
+That does not imply:
+
+- shared authority assumptions
+- shared policy foundations
+- shared admissibility conditions
+- shared comparison basis
+
+Operational interoperability can exist without governance
+comparability.
+
+Decifact exists to inspect that distinction.
+
+---
+
 ### Governance Object
 
 The governance decision artifact is the unit of comparison.
