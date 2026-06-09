@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decifact Playground</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #0d1117;
+      color: #c9d1d9;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 2rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: #f0f6fc;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      color: #8b949e;
+      font-size: 1rem;
+    }
+
+    .panels {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .panels {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .panel label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #58a6ff;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    textarea {
+      width: 100%;
+      height: 320px;
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      color: #c9d1d9;
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.8125rem;
+      line-height: 1.5;
+      padding: 1rem;
+      resize: vertical;
+    }
+
+    textarea:focus {
+      outline: none;
+      border-color: #58a6ff;
+    }
+
+    .actions {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    button {
+      background: #238636;
+      border: 1px solid #2ea043;
+      border-radius: 6px;
+      color: #ffffff;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      transition: background 0.15s;
+    }
+
+    button:hover {
+      background: #2ea043;
+    }
+
+    button:disabled {
+      background: #21262d;
+      border-color: #30363d;
+      color: #8b949e;
+      cursor: not-allowed;
+    }
+
+    .result {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .result.hidden {
+      display: none;
+    }
+
+    .classification {
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .classification.equivalent {
+      color: #3fb950;
+    }
+
+    .classification.non-equivalent {
+      color: #d29922;
+    }
+
+    .classification.formally-incomparable {
+      color: #f85149;
+    }
+
+    .interpretation {
+      color: #8b949e;
+      font-size: 1rem;
+      max-width: 36rem;
+    }
+
+    .fracture-list {
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+
+    .fracture-list li {
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.875rem;
+      color: #8b949e;
+      padding: 0.25rem 0;
+    }
+
+    .fracture-list li::before {
+      content: "— ";
+      color: #484f58;
+    }
+
+    .error {
+      color: #f85149;
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.9375rem;
+    }
+
+    footer {
+      margin-top: auto;
+      padding-top: 2rem;
+      text-align: center;
+      color: #484f58;
+      font-size: 0.8125rem;
+    }
+
+    footer a {
+      color: #58a6ff;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Decifact Playground</h1>
+    <p class="subtitle">Paste two governance objects. Compare. See if they're comparable.</p>
+  </header>
+
+  <div class="panels">
+    <div class="panel">
+      <label for="runtime-a">Runtime A</label>
+      <textarea id="runtime-a">{
+  "decision": {
+    "intent": "deploy_ai_triage",
+    "target": "patient_triage_module"
+  },
+  "authority_context": {
+    "authority_domain": "UK-Health-Ministry",
+    "policy_reference": "UK-AI-Framework-v1",
+    "execution_context": "deploy",
+    "admissibility_scope": "clinical-decision-support"
+  }
+}</textarea>
+    </div>
+    <div class="panel">
+      <label for="runtime-b">Runtime B</label>
+      <textarea id="runtime-b">{
+  "decision": {
+    "intent": "deploy_ai_triage",
+    "target": "patient_triage_module"
+  },
+  "authority_context": {
+    "authority_domain": "UAE-Health-Ministry",
+    "policy_reference": "UAE-AI-Framework-v2026",
+    "execution_context": "deploy",
+    "admissibility_scope": "clinical-oversight"
+  }
+}</textarea>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button id="compare-btn" type="button">Compare →</button>
+  </div>
+
+  <div id="result" class="result hidden"></div>
+
+  <footer>
+    Decifact — <a href="https://github.com/xsa520/decifact" target="_blank" rel="noopener">github.com/xsa520/decifact</a>
+  </footer>
+
+  <script>
+    const API_URL = "http://127.0.0.1:8000/compare";
+
+    const INTERPRETATIONS = {
+      EQUIVALENT: "These decisions share the same governance foundation.",
+      NON_EQUIVALENT: "Same governance basis. Conditions differ.",
+      FORMALLY_INCOMPARABLE: "No shared comparison basis. Not a disagreement — a structural finding."
+    };
+
+    const CLASSIFICATION_CLASSES = {
+      EQUIVALENT: "equivalent",
+      NON_EQUIVALENT: "non-equivalent",
+      FORMALLY_INCOMPARABLE: "formally-incomparable"
+    };
+
+    const runtimeA = document.getElementById("runtime-a");
+    const runtimeB = document.getElementById("runtime-b");
+    const compareBtn = document.getElementById("compare-btn");
+    const resultEl = document.getElementById("result");
+
+    function parseRuntime(text, label) {
+      try {
+        return JSON.parse(text);
+      } catch {
+        throw new Error("Invalid JSON in " + label);
+      }
+    }
+
+    function buildPayload(runtimeAObj, runtimeBObj) {
+      return {
+        runtime_a: runtimeAObj,
+        runtime_b: runtimeBObj
+      };
+    }
+
+    function showError(message) {
+      resultEl.classList.remove("hidden");
+      resultEl.innerHTML = '<p class="error">' + message + "</p>";
+    }
+
+    function showResult(data) {
+      const classification = data.comparability_classification || "UNKNOWN";
+      const cssClass = CLASSIFICATION_CLASSES[classification] || "";
+      const interpretation = INTERPRETATIONS[classification] || "";
+      const fractures = Array.isArray(data.fracture_boundary) ? data.fracture_boundary : [];
+
+      let fractureHtml = "";
+      if (fractures.length > 0) {
+        fractureHtml = "<ul class=\"fracture-list\">" +
+          fractures.map(function (item) {
+            return "<li>" + item + "</li>";
+          }).join("") +
+          "</ul>";
+      }
+
+      resultEl.classList.remove("hidden");
+      resultEl.innerHTML =
+        '<div class="classification ' + cssClass + '">' + classification + "</div>" +
+        fractureHtml +
+        '<p class="interpretation">' + interpretation + "</p>";
+    }
+
+    compareBtn.addEventListener("click", async function () {
+      let runtimeAObj;
+      let runtimeBObj;
+
+      try {
+        runtimeAObj = parseRuntime(runtimeA.value.trim(), "Runtime A");
+      } catch (err) {
+        showError(err.message);
+        return;
+      }
+
+      try {
+        runtimeBObj = parseRuntime(runtimeB.value.trim(), "Runtime B");
+      } catch (err) {
+        showError(err.message);
+        return;
+      }
+
+      const payload = buildPayload(runtimeAObj, runtimeBObj);
+
+      compareBtn.disabled = true;
+
+      try {
+        const response = await fetch(API_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+          const detail = await response.text();
+          showError("Server error (" + response.status + "): " + detail);
+          return;
+        }
+
+        const data = await response.json();
+        showResult(data);
+      } catch (err) {
+        showError("Server not running. Start with: uvicorn app.main:app --reload");
+      } finally {
+        compareBtn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
