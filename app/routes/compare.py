@@ -19,6 +19,13 @@ class CompareRequest(BaseModel):
     runtime_b: RuntimeInput
 
 
+def _has_shared_canonical_reference(
+    authority_a: AuthorityContext,
+    authority_b: AuthorityContext,
+) -> bool:
+    return authority_a.policy_reference == authority_b.policy_reference
+
+
 def _build_fracture_boundary(
     canonical_hash_a: str,
     canonical_hash_b: str,
@@ -32,7 +39,7 @@ def _build_fracture_boundary(
     # Phase 1 proxy: policy_reference equality as shared canonical reference check.
     # TODO: replace with reference translation admissibility check (Phase 2)
     # when schema supports canonical_reference and accepts_external_comparison fields.
-    if authority_a.policy_reference != authority_b.policy_reference:
+    if not _has_shared_canonical_reference(authority_a, authority_b):
         fracture_boundary.append("no_shared_canonical_reference")
 
     if canonical_hash_a != canonical_hash_b:
@@ -53,17 +60,25 @@ def _build_fracture_boundary(
     return fracture_boundary
 
 
-def _classify_comparability(fracture_boundary: list[str]) -> str:
+def _classify_comparability(
+    canonical_equivalent: bool,
+    governance_equivalent: bool,
+    authority_a: AuthorityContext,
+    authority_b: AuthorityContext,
+    fracture_boundary: list[str],
+) -> tuple[str, list[str]]:
     # Phase 1: classification based on policy_reference proxy.
     # FORMALLY_INCOMPARABLE: no shared canonical reference detected.
     # REQUIRES_REFERENCE_TRANSLATION: reserved for Phase 2 when
     #   translation path detection is implemented.
     # TODO: extend to REQUIRES_REFERENCE_TRANSLATION in Phase 2.
-    if "no_shared_canonical_reference" in fracture_boundary:
-        return "FORMALLY_INCOMPARABLE"
-    if fracture_boundary:
-        return "NON_EQUIVALENT"
-    return "EQUIVALENT"
+    if not _has_shared_canonical_reference(authority_a, authority_b):
+        return "FORMALLY_INCOMPARABLE", ["no_shared_canonical_reference"]
+
+    if canonical_equivalent and governance_equivalent:
+        return "EQUIVALENT", []
+
+    return "NON_EQUIVALENT", fracture_boundary
 
 
 @router.post("/compare")
@@ -76,7 +91,12 @@ def compare(payload: CompareRequest) -> dict:
     boundary_context_hash_a = compute_boundary_context_hash(authority_a)
     boundary_context_hash_b = compute_boundary_context_hash(authority_b)
 
-    fracture_boundary = _build_fracture_boundary(
+    canonical_equivalent = canonical_hash_a == canonical_hash_b
+    governance_equivalent = (
+        boundary_context_hash_a == boundary_context_hash_b
+    )
+
+    internal_fracture_boundary = _build_fracture_boundary(
         canonical_hash_a,
         canonical_hash_b,
         boundary_context_hash_a,
@@ -85,14 +105,18 @@ def compare(payload: CompareRequest) -> dict:
         payload.runtime_b.authority_context,
     )
 
-    comparability_classification = _classify_comparability(fracture_boundary)
+    comparability_classification, fracture_boundary = _classify_comparability(
+        canonical_equivalent,
+        governance_equivalent,
+        payload.runtime_a.authority_context,
+        payload.runtime_b.authority_context,
+        internal_fracture_boundary,
+    )
 
     return {
         "comparability_classification": comparability_classification,
-        "canonical_equivalent": canonical_hash_a == canonical_hash_b,
-        "governance_equivalent": (
-            boundary_context_hash_a == boundary_context_hash_b
-        ),
+        "canonical_equivalent": canonical_equivalent,
+        "governance_equivalent": governance_equivalent,
         "fracture_boundary": fracture_boundary,
         "canonical_hash_a": canonical_hash_a,
         "canonical_hash_b": canonical_hash_b,
