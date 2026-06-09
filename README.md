@@ -1,3 +1,9 @@
+---
+
+👉 **New here? Start with [QUICKSTART.md](docs/QUICKSTART.md)** — understand and run Decifact in 5 minutes.
+
+---
+
 Decifact does not determine authority.
 It exposes comparability boundaries.
 
