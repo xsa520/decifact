@@ -40,6 +40,8 @@ Is this a disagreement — or an incomparability?
 
 ## 4. Quickstart (5 minutes)
 
+The example below runs Scenario A (Hospital Triage) — two independently approved systems being checked against each other before coordination begins.
+
 ### Install and run
 
 ```bash
