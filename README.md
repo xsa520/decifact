@@ -4,14 +4,27 @@
 
 ---
 
-Decifact does not determine authority.
-It exposes comparability boundaries.
+Two systems can both pass audit.
+
+That doesn't mean their decisions can be reconciled.
 
 # Decifact
 
-**Cross-system decision equivalence based on invariant boundaries.**
+Decifact verifies whether two independently governed decisions share a comparable reference — before anyone assumes they do.
 
-Built on Guardian v0.2 — Decision Equivalence Specification.
+*(Cross-system decision equivalence based on invariant boundaries. Built on Guardian v0.2 — Decision Equivalence Specification.)*
+
+---
+
+## Recognize This?
+
+Two ministries each deploy the same kind of AI system. Each one passes its own audit. Each has its own approved policy framework. Each has signed off internally.
+
+Then they need to coordinate — and discover their decisions don't line up.
+
+Neither one is wrong. Neither audit was incomplete. But something that was assumed to be comparable... wasn't ever checked.
+
+That's the gap this addresses. (Full worked example below.)
 
 ---
 
@@ -26,7 +39,7 @@ These are necessary questions. But they leave a deeper problem unaddressed.
 
 **When independently governed systems begin coordinating — sharing decisions, delegating authority, producing joint consequences — a prior question must be answered first:**
 
-> Were the governance conditions across these systems ever established as comparable before their outputs began creating shared institutional dependencies?
+> Before these systems started depending on each other's outputs, was anyone checking whether their decisions could even be placed side by side in the first place?
 
 This is not a runtime enforcement problem. It is a precondition problem.
 
@@ -38,12 +51,14 @@ Decifact is the minimal inspectable surface for this layer.
 
 ## The Problem
 
-When two independently governed AI systems process the same input and produce different decisions, most systems cannot answer:
+That's the situation in miniature. More generally:
 
-- Are these decisions actually different?
-- If so, where exactly do they diverge?
-- Is the divergence structurally significant, or just representational noise?
-- Were the governance conditions under which each decision was made ever canonically comparable?
+When two independently governed AI systems process the same input and reach different decisions, most setups can't answer:
+
+- Are these decisions actually different — or just expressed differently?
+- If they diverge, where exactly does that happen?
+- Does the divergence matter — or is it just noise in how each system represents things?
+- Was anyone checking, before now, whether these two systems' decisions could even be placed side by side?
 
 Without a standard for decision equivalence, cross-system coordination is undefined.
 
@@ -263,7 +278,7 @@ The question Decifact evaluates is not:
 
 The question is:
 
-> Were these governance decisions ever established on a canonically comparable reference before coordination began?
+> Was anyone checking whether these two "valid" decisions could ever be placed on the same basis to begin with?
 
 If no shared canonical reference exists, Decifact returns:
 
