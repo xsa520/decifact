@@ -16,6 +16,28 @@ Decifact verifies whether two independently governed decisions share a comparabl
 
 ---
 
+## What Decifact Determines
+
+Decifact answers one question:
+
+> Can two independently governed decisions be meaningfully compared?
+
+Not whether they are correct.
+Not whether they are compliant.
+Not whether they should be executed.
+
+Only whether a shared comparison basis exists.
+
+Decifact determines:
+
+- **`EQUIVALENT`**
+- **`NON_EQUIVALENT`**
+- **`FORMALLY_INCOMPARABLE`**
+
+and identifies the fracture boundary responsible for the result.
+
+---
+
 ## Recognize This?
 
 Two ministries each deploy the same kind of AI system. Each one passes its own audit. Each has its own approved policy framework. Each has signed off internally.
@@ -67,39 +89,6 @@ Without a standard for decision equivalence, cross-system coordination is undefi
 
 > "The canonical boundary must exist before layer instantiation."
 > — Guardian Constitutional Invariant
-
----
-
-## Where Decifact Sits
-
-```
-┌─────────────────────────────────────────────────────────┐
-│  Independently Governed System A                        │
-│  (its own policy, authority, execution environment)     │
-└──────────────────────┬──────────────────────────────────┘
-                       │
-                       ▼
-┌─────────────────────────────────────────────────────────┐
-│  DECIFACT — Comparability Boundary Layer                │
-│                                                         │
-│  "Were these decisions produced under governance        │
-│   conditions that were ever canonically comparable?"    │
-│                                                         │
-│  /verify-equivalence  /canonicalize  /compare           │
-└──────────────────────┬──────────────────────────────────┘
-                       │
-                       ▼
-┌─────────────────────────────────────────────────────────┐
-│  Independently Governed System B                        │
-│  (its own policy, authority, execution environment)     │
-└─────────────────────────────────────────────────────────┘
-```
-
-Decifact does not govern either system.
-It does not transfer authority between them.
-It exposes whether their decisions share the invariant boundary required for meaningful coordination.
-
-**This question must be answered before coordination begins — not after consequences have already formed.**
 
 ---
 
@@ -175,6 +164,39 @@ Determines whether two decisions share the same **invariant boundary** — the m
 
 ---
 
+## Where Decifact Sits
+
+```
+┌─────────────────────────────────────────────────────────┐
+│  Independently Governed System A                        │
+│  (its own policy, authority, execution environment)     │
+└──────────────────────┬──────────────────────────────────┘
+                       │
+                       ▼
+┌─────────────────────────────────────────────────────────┐
+│  DECIFACT — Comparability Boundary Layer                │
+│                                                         │
+│  "Were these decisions produced under governance        │
+│   conditions that were ever canonically comparable?"    │
+│                                                         │
+│  /verify-equivalence  /canonicalize  /compare           │
+└──────────────────────┬──────────────────────────────────┘
+                       │
+                       ▼
+┌─────────────────────────────────────────────────────────┐
+│  Independently Governed System B                        │
+│  (its own policy, authority, execution environment)     │
+└─────────────────────────────────────────────────────────┘
+```
+
+Decifact does not govern either system.
+It does not transfer authority between them.
+It exposes whether their decisions share the invariant boundary required for meaningful coordination.
+
+**This question must be answered before coordination begins — not after consequences have already formed.**
+
+---
+
 ## Endpoints
 
 | Endpoint | Function |
@@ -215,6 +237,44 @@ conservative and may classify some translatable governance frameworks
 as formally incomparable until reference translation mechanisms are
 introduced. Future releases will extend this with reference translation
 admissibility and authority translation mechanisms (Guardian v0.3).
+
+---
+
+## What Comparability Cannot Determine
+
+Comparability answers a specific question: can two decisions be placed on the same comparison basis?
+
+Many important governance questions remain outside that determination — not because they are unimportant, but because they are different questions.
+
+### Truth
+
+Comparability does not determine whether either decision is correct.
+
+Two decisions may be comparable and both wrong.
+
+### Conformance
+
+Comparability does not determine whether a system's behavior conforms to its own declarations.
+
+That is a question about the relationship between a claim and conduct, not between two claims.
+
+### Persistence
+
+Comparability describes a relationship at the time it is evaluated.
+
+Whether that relationship remains stable as either system evolves — new policies, new authority structures, new operating contexts — is a separate question.
+
+### Reconstructability
+
+Comparability does not determine whether a decision, or the governance conditions surrounding it, can be independently reconstructed at a later time.
+
+That is a different question from comparability itself.
+
+### Execution
+
+Comparability does not determine whether a decision should be executed.
+
+A decision may be comparable and still be inadmissible.
 
 ---
 
@@ -445,7 +505,7 @@ def check_equivalence(decision_a, decision_b):
 
 ## Scope
 
-This engine evaluates **decision comparability and equivalence** (Guardian v0.2).
+Decifact evaluates **comparability** and **equivalence** (Guardian v0.2).
 
 | Concern | Scope |
 |---------|-------|
@@ -454,18 +514,14 @@ This engine evaluates **decision comparability and equivalence** (Guardian v0.2)
 | Decision acceptance | ❌ Guardian v0.3 (upcoming) |
 | Execution correctness | ❌ Out of scope |
 | Identity validation | ❌ Out of scope |
-| Runtime policy enforcement | ❌ Out of scope — that is a different layer |
+| Runtime policy enforcement | ❌ Out of scope — a different layer |
 | Governance of either system | ❌ Out of scope — Decifact sits between systems, not inside them |
 
-Comparability determines whether two decisions can be meaningfully compared.
+It does not determine correctness, acceptance, authority, execution admissibility, runtime enforcement, or governance ownership.
 
-Equivalence determines whether two decisions are the same decision.
+Those questions may remain important. They are simply different questions.
 
-Acceptance determines whether a decision is valid within a context.
-
-Comparability precedes equivalence. Equivalence precedes acceptance.
-
-These concerns MUST remain strictly separated.
+Comparability precedes equivalence. Equivalence precedes acceptance. These concerns remain strictly separated.
 
 **Decifact does not tell systems what to do. It exposes whether they were ever comparable enough for coordination to be meaningful.**
 
