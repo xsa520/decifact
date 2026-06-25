@@ -132,9 +132,11 @@ It does **not** establish whether governance claims are transferable across inde
 
 Before two governance decisions can be meaningfully compared, a prior condition must already hold:
 
-> The governance conditions carried by each decision must be be admissible for transfer into the comparison itself.
+> The governance conditions carried by each decision must be admissible for transfer into the comparison itself.
 
 Layer validity does **not** automatically imply layer transferability.
+
+Transfer occurred does not imply transfer was validated.
 
 A governance framework may be internally valid within its own authority, policy, and execution context while remaining non-transferable outside that context.
 
@@ -142,7 +144,9 @@ Comparability therefore begins only after transferability has already been estab
 
 Decifact evaluates comparability after that prerequisite has been satisfied.
 
-Transferability itself remains a separate governance question.
+Transferability itself remains outside the scope of Decifact.
+
+Decifact assumes that transferability, when required, has already been established.
 
 ### Governance Object
 
@@ -591,7 +595,7 @@ See: [examples/verify_demo.py](examples/verify_demo.py)
 
 The theoretical development of Decifact is governed independently from the implementation.
 
-Research methodology, constitutional principles, topology evolution, objection analysis, and hypothesis validation are maintained separately from this implementation repository.
+Research methodology, constitutional principles, topology observation, objection analysis, and hypothesis validation are maintained separately from this implementation repository.
 
 This repository intentionally remains scoped to the **comparability layer**.
 
