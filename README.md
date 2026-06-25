@@ -122,6 +122,28 @@ Decifact exists to inspect that distinction.
 
 ---
 
+
+
+## Comparability Is Not Automatic
+
+Decifact evaluates **comparability**.
+
+It does **not** establish whether governance claims are transferable across independent governance layers.
+
+Before two governance decisions can be meaningfully compared, a prior condition must already hold:
+
+> The governance conditions carried by each decision must be be admissible for transfer into the comparison itself.
+
+Layer validity does **not** automatically imply layer transferability.
+
+A governance framework may be internally valid within its own authority, policy, and execution context while remaining non-transferable outside that context.
+
+Comparability therefore begins only after transferability has already been established.
+
+Decifact evaluates comparability after that prerequisite has been satisfied.
+
+Transferability itself remains a separate governance question.
+
 ### Governance Object
 
 The governance decision artifact is the unit of comparison.
@@ -561,3 +583,16 @@ Run the minimal comparability demo:
     python3 examples/verify_demo.py examples/example-decisions.json
 
 See: [examples/verify_demo.py](examples/verify_demo.py)
+
+
+---
+
+## Research
+
+The theoretical development of Decifact is governed independently from the implementation.
+
+Research methodology, constitutional principles, topology evolution, objection analysis, and hypothesis validation are maintained separately from this implementation repository.
+
+This repository intentionally remains scoped to the **comparability layer**.
+
+Decifact evaluates comparability. It does not determine layer transferability, governance acceptance, runtime admissibility, execution authority, or coordination policy.
