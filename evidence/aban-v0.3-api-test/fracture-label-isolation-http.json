@@ -1,5 +1,7 @@
 {
-  "endpoint": "http://127.0.0.1:8765/compare",
+  "endpoint": "http://127.0.0.1:8766/compare",
+  "remediation": "Phase 2 public-output narrowing: decision_object_divergence and authority_assumption_divergence removed from public fracture_boundary",
+  "interface_rule": "An empty public fracture_boundary does not imply equivalence. Callers must read comparability_classification, canonical_equivalent, and governance_equivalent.",
   "cases": {
     "identical_baseline": {
       "http_status": 200,
@@ -22,9 +24,7 @@
         "comparability_classification": "NON_EQUIVALENT",
         "canonical_equivalent": false,
         "governance_equivalent": true,
-        "fracture_boundary": [
-          "decision_object_divergence"
-        ],
+        "fracture_boundary": [],
         "canonical_hash_a": "28ee6f77dc21fee0fd46ee51daeab15e83f618ab19f3388a88def28b007cc64b",
         "canonical_hash_b": "f271d5cf360d5cc4b404c8d46cb330f594775e552c199ee6a4c103ef2374975b",
         "boundary_context_hash_a": "c0c1c0313e37be215ca282f41308650c2384b469c09202143806e9d49d03a9b1",
@@ -39,9 +39,7 @@
         "comparability_classification": "NON_EQUIVALENT",
         "canonical_equivalent": true,
         "governance_equivalent": false,
-        "fracture_boundary": [
-          "authority_assumption_divergence"
-        ],
+        "fracture_boundary": [],
         "canonical_hash_a": "28ee6f77dc21fee0fd46ee51daeab15e83f618ab19f3388a88def28b007cc64b",
         "canonical_hash_b": "28ee6f77dc21fee0fd46ee51daeab15e83f618ab19f3388a88def28b007cc64b",
         "boundary_context_hash_a": "c0c1c0313e37be215ca282f41308650c2384b469c09202143806e9d49d03a9b1",
@@ -57,8 +55,7 @@
         "canonical_equivalent": true,
         "governance_equivalent": false,
         "fracture_boundary": [
-          "no_governing_condition_translation_defined",
-          "authority_assumption_divergence"
+          "no_governing_condition_translation_defined"
         ],
         "canonical_hash_a": "28ee6f77dc21fee0fd46ee51daeab15e83f618ab19f3388a88def28b007cc64b",
         "canonical_hash_b": "28ee6f77dc21fee0fd46ee51daeab15e83f618ab19f3388a88def28b007cc64b",
@@ -74,9 +71,7 @@
         "comparability_classification": "NON_EQUIVALENT",
         "canonical_equivalent": true,
         "governance_equivalent": false,
-        "fracture_boundary": [
-          "authority_assumption_divergence"
-        ],
+        "fracture_boundary": [],
         "canonical_hash_a": "28ee6f77dc21fee0fd46ee51daeab15e83f618ab19f3388a88def28b007cc64b",
         "canonical_hash_b": "28ee6f77dc21fee0fd46ee51daeab15e83f618ab19f3388a88def28b007cc64b",
         "boundary_context_hash_a": "e6f88dd8d5274ec4c77d96183efdf0bd4b4ad599014bb99eb1c86ab3d30a3ae8",
@@ -93,8 +88,7 @@
         "governance_equivalent": false,
         "fracture_boundary": [
           "no_shared_canonical_reference",
-          "no_governing_condition_translation_defined",
-          "decision_object_divergence"
+          "no_governing_condition_translation_defined"
         ],
         "canonical_hash_a": "28ee6f77dc21fee0fd46ee51daeab15e83f618ab19f3388a88def28b007cc64b",
         "canonical_hash_b": "f271d5cf360d5cc4b404c8d46cb330f594775e552c199ee6a4c103ef2374975b",
@@ -111,13 +105,27 @@
         "canonical_equivalent": true,
         "governance_equivalent": false,
         "fracture_boundary": [
-          "no_governing_condition_translation_defined",
-          "authority_assumption_divergence"
+          "no_governing_condition_translation_defined"
         ],
         "canonical_hash_a": "28ee6f77dc21fee0fd46ee51daeab15e83f618ab19f3388a88def28b007cc64b",
         "canonical_hash_b": "28ee6f77dc21fee0fd46ee51daeab15e83f618ab19f3388a88def28b007cc64b",
         "boundary_context_hash_a": "c0c1c0313e37be215ca282f41308650c2384b469c09202143806e9d49d03a9b1",
         "boundary_context_hash_b": "297ddc2c641e0cf43d84de90f1f285aff8c0e8ef4c8302485e9032ab91e2f041",
+        "replayable": true,
+        "sovereignty_principle": "canonical boundary must exist before layer instantiation"
+      }
+    },
+    "masking_decision_and_authority": {
+      "http_status": 200,
+      "body": {
+        "comparability_classification": "NON_EQUIVALENT",
+        "canonical_equivalent": false,
+        "governance_equivalent": false,
+        "fracture_boundary": [],
+        "canonical_hash_a": "28ee6f77dc21fee0fd46ee51daeab15e83f618ab19f3388a88def28b007cc64b",
+        "canonical_hash_b": "f271d5cf360d5cc4b404c8d46cb330f594775e552c199ee6a4c103ef2374975b",
+        "boundary_context_hash_a": "c0c1c0313e37be215ca282f41308650c2384b469c09202143806e9d49d03a9b1",
+        "boundary_context_hash_b": "b7c5478eb4be6ac0f86978b82856d7a3525e12d573af25d23e19994d6d297d60",
         "replayable": true,
         "sovereignty_principle": "canonical boundary must exist before layer instantiation"
       }

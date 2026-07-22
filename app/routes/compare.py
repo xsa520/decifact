@@ -42,10 +42,6 @@ def _has_governing_condition_translation(
 
 
 def _build_fracture_boundary(
-    canonical_hash_a: str,
-    canonical_hash_b: str,
-    boundary_context_hash_a: str,
-    boundary_context_hash_b: str,
     authority_a: AuthorityContext,
     authority_b: AuthorityContext,
 ) -> list[str]:
@@ -60,14 +56,10 @@ def _build_fracture_boundary(
     if not _has_governing_condition_translation(authority_a, authority_b):
         fracture_boundary.append("no_governing_condition_translation_defined")
 
-    if canonical_hash_a != canonical_hash_b:
-        fracture_boundary.append("decision_object_divergence")
-
-    if (
-        boundary_context_hash_a != boundary_context_hash_b
-        and canonical_hash_a == canonical_hash_b
-    ):
-        fracture_boundary.append("authority_assumption_divergence")
+    # decision_object_divergence / authority_assumption_divergence are not
+    # emitted on the public fracture_boundary (isolation remediation:
+    # over-broad hash-layer diagnostics with masking). Equivalence booleans
+    # and classification remain the carriers for those differences.
 
     if (
         authority_a.authority_domain == authority_b.authority_domain
@@ -117,11 +109,7 @@ def compare(payload: CompareRequest) -> dict:
         boundary_context_hash_a == boundary_context_hash_b
     )
 
-    internal_fracture_boundary = _build_fracture_boundary(
-        canonical_hash_a,
-        canonical_hash_b,
-        boundary_context_hash_a,
-        boundary_context_hash_b,
+    public_fracture_boundary = _build_fracture_boundary(
         payload.runtime_a.authority_context,
         payload.runtime_b.authority_context,
     )
@@ -131,7 +119,7 @@ def compare(payload: CompareRequest) -> dict:
         governance_equivalent,
         payload.runtime_a.authority_context,
         payload.runtime_b.authority_context,
-        internal_fracture_boundary,
+        public_fracture_boundary,
     )
 
     return {

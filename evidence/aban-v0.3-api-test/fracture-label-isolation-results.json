@@ -10,10 +10,9 @@
       "canonical_equivalent": true,
       "governance_equivalent": true,
       "replayable": true,
-      "decision_object_divergence": false,
-      "authority_assumption_divergence": false,
+      "public_decision_object_divergence": false,
+      "public_authority_assumption_divergence": false,
       "confirmed_fractures": [],
-      "exploratory_labels": [],
       "compare_invoked": true,
       "notes": "identical runtimes"
     },
@@ -23,20 +22,15 @@
         "decision.intent"
       ],
       "comparability_classification": "NON_EQUIVALENT",
-      "fracture_boundary": [
-        "decision_object_divergence"
-      ],
+      "fracture_boundary": [],
       "canonical_equivalent": false,
       "governance_equivalent": true,
       "replayable": true,
-      "decision_object_divergence": true,
-      "authority_assumption_divergence": false,
+      "public_decision_object_divergence": false,
+      "public_authority_assumption_divergence": false,
       "confirmed_fractures": [],
-      "exploratory_labels": [
-        "decision_object_divergence"
-      ],
       "compare_invoked": true,
-      "notes": ""
+      "notes": "empty public fracture_boundary; NON_EQUIVALENT via booleans"
     },
     {
       "case_id": "B",
@@ -44,18 +38,13 @@
         "decision.target"
       ],
       "comparability_classification": "NON_EQUIVALENT",
-      "fracture_boundary": [
-        "decision_object_divergence"
-      ],
+      "fracture_boundary": [],
       "canonical_equivalent": false,
       "governance_equivalent": true,
       "replayable": true,
-      "decision_object_divergence": true,
-      "authority_assumption_divergence": false,
+      "public_decision_object_divergence": false,
+      "public_authority_assumption_divergence": false,
       "confirmed_fractures": [],
-      "exploratory_labels": [
-        "decision_object_divergence"
-      ],
       "compare_invoked": true,
       "notes": ""
     },
@@ -65,18 +54,13 @@
         "authority_context.authority_domain"
       ],
       "comparability_classification": "NON_EQUIVALENT",
-      "fracture_boundary": [
-        "authority_assumption_divergence"
-      ],
+      "fracture_boundary": [],
       "canonical_equivalent": true,
       "governance_equivalent": false,
       "replayable": true,
-      "decision_object_divergence": false,
-      "authority_assumption_divergence": true,
+      "public_decision_object_divergence": false,
+      "public_authority_assumption_divergence": false,
       "confirmed_fractures": [],
-      "exploratory_labels": [
-        "authority_assumption_divergence"
-      ],
       "compare_invoked": true,
       "notes": ""
     },
@@ -87,19 +71,15 @@
       ],
       "comparability_classification": "FORMALLY_INCOMPARABLE",
       "fracture_boundary": [
-        "no_shared_canonical_reference",
-        "authority_assumption_divergence"
+        "no_shared_canonical_reference"
       ],
       "canonical_equivalent": true,
       "governance_equivalent": false,
       "replayable": true,
-      "decision_object_divergence": false,
-      "authority_assumption_divergence": true,
+      "public_decision_object_divergence": false,
+      "public_authority_assumption_divergence": false,
       "confirmed_fractures": [
         "no_shared_canonical_reference"
-      ],
-      "exploratory_labels": [
-        "authority_assumption_divergence"
       ],
       "compare_invoked": true,
       "notes": ""
@@ -111,19 +91,15 @@
       ],
       "comparability_classification": "FORMALLY_INCOMPARABLE",
       "fracture_boundary": [
-        "no_governing_condition_translation_defined",
-        "authority_assumption_divergence"
+        "no_governing_condition_translation_defined"
       ],
       "canonical_equivalent": true,
       "governance_equivalent": false,
       "replayable": true,
-      "decision_object_divergence": false,
-      "authority_assumption_divergence": true,
+      "public_decision_object_divergence": false,
+      "public_authority_assumption_divergence": false,
       "confirmed_fractures": [
         "no_governing_condition_translation_defined"
-      ],
-      "exploratory_labels": [
-        "authority_assumption_divergence"
       ],
       "compare_invoked": true,
       "notes": "no translation_ref"
@@ -135,20 +111,15 @@
         "authority_context.governing_condition_translation_ref (same on both)"
       ],
       "comparability_classification": "NON_EQUIVALENT",
-      "fracture_boundary": [
-        "authority_assumption_divergence"
-      ],
+      "fracture_boundary": [],
       "canonical_equivalent": true,
       "governance_equivalent": false,
       "replayable": true,
-      "decision_object_divergence": false,
-      "authority_assumption_divergence": true,
+      "public_decision_object_divergence": false,
+      "public_authority_assumption_divergence": false,
       "confirmed_fractures": [],
-      "exploratory_labels": [
-        "authority_assumption_divergence"
-      ],
       "compare_invoked": true,
-      "notes": "shared valid translation_ref; confirmed translation fracture absent"
+      "notes": "shared translation_ref; empty public boundary; NON_EQUIVALENT"
     },
     {
       "case_id": "G",
@@ -156,18 +127,13 @@
         "authority_context.execution_context"
       ],
       "comparability_classification": "NON_EQUIVALENT",
-      "fracture_boundary": [
-        "authority_assumption_divergence"
-      ],
+      "fracture_boundary": [],
       "canonical_equivalent": true,
       "governance_equivalent": false,
       "replayable": true,
-      "decision_object_divergence": false,
-      "authority_assumption_divergence": true,
+      "public_decision_object_divergence": false,
+      "public_authority_assumption_divergence": false,
       "confirmed_fractures": [],
-      "exploratory_labels": [
-        "authority_assumption_divergence"
-      ],
       "compare_invoked": true,
       "notes": ""
     },
@@ -178,20 +144,16 @@
       ],
       "comparability_classification": "NON_EQUIVALENT",
       "fracture_boundary": [
-        "authority_assumption_divergence",
         "acceptance_context_mismatch"
       ],
       "canonical_equivalent": true,
       "governance_equivalent": false,
       "replayable": true,
-      "decision_object_divergence": false,
-      "authority_assumption_divergence": true,
+      "public_decision_object_divergence": false,
+      "public_authority_assumption_divergence": false,
       "confirmed_fractures": [],
-      "exploratory_labels": [
-        "authority_assumption_divergence"
-      ],
       "compare_invoked": true,
-      "notes": "may also emit acceptance_context_mismatch"
+      "notes": "acceptance_context_mismatch remains public"
     },
     {
       "case_id": "I",
@@ -199,18 +161,13 @@
         "authority_context.governing_condition_translation_ref"
       ],
       "comparability_classification": "NON_EQUIVALENT",
-      "fracture_boundary": [
-        "authority_assumption_divergence"
-      ],
+      "fracture_boundary": [],
       "canonical_equivalent": true,
       "governance_equivalent": false,
       "replayable": true,
-      "decision_object_divergence": false,
-      "authority_assumption_divergence": true,
+      "public_decision_object_divergence": false,
+      "public_authority_assumption_divergence": false,
       "confirmed_fractures": [],
-      "exploratory_labels": [
-        "authority_assumption_divergence"
-      ],
       "compare_invoked": true,
       "notes": "governing_condition identical"
     },
@@ -222,23 +179,19 @@
       "comparability_classification": "FORMALLY_INCOMPARABLE",
       "fracture_boundary": [
         "no_shared_canonical_reference",
-        "no_governing_condition_translation_defined",
-        "decision_object_divergence"
+        "no_governing_condition_translation_defined"
       ],
       "canonical_equivalent": false,
       "governance_equivalent": false,
       "replayable": true,
-      "decision_object_divergence": true,
-      "authority_assumption_divergence": false,
+      "public_decision_object_divergence": false,
+      "public_authority_assumption_divergence": false,
       "confirmed_fractures": [
         "no_shared_canonical_reference",
         "no_governing_condition_translation_defined"
       ],
-      "exploratory_labels": [
-        "decision_object_divergence"
-      ],
       "compare_invoked": true,
-      "notes": "current 3b multi-field fixture"
+      "notes": "confirmed public fractures only"
     },
     {
       "case_id": "K",
@@ -247,22 +200,18 @@
       ],
       "comparability_classification": "FORMALLY_INCOMPARABLE",
       "fracture_boundary": [
-        "no_governing_condition_translation_defined",
-        "authority_assumption_divergence"
+        "no_governing_condition_translation_defined"
       ],
       "canonical_equivalent": true,
       "governance_equivalent": false,
       "replayable": true,
-      "decision_object_divergence": false,
-      "authority_assumption_divergence": true,
+      "public_decision_object_divergence": false,
+      "public_authority_assumption_divergence": false,
       "confirmed_fractures": [
         "no_governing_condition_translation_defined"
       ],
-      "exploratory_labels": [
-        "authority_assumption_divergence"
-      ],
       "compare_invoked": true,
-      "notes": "current 3e multi-field fixture"
+      "notes": "translation confirmed fracture only"
     },
     {
       "case_id": "L",
@@ -271,20 +220,15 @@
         "authority_context.authority_domain"
       ],
       "comparability_classification": "NON_EQUIVALENT",
-      "fracture_boundary": [
-        "decision_object_divergence"
-      ],
+      "fracture_boundary": [],
       "canonical_equivalent": false,
       "governance_equivalent": false,
       "replayable": true,
-      "decision_object_divergence": true,
-      "authority_assumption_divergence": false,
+      "public_decision_object_divergence": false,
+      "public_authority_assumption_divergence": false,
       "confirmed_fractures": [],
-      "exploratory_labels": [
-        "decision_object_divergence"
-      ],
       "compare_invoked": true,
-      "notes": "masking case: authority exploratory suppressed"
+      "notes": "empty public boundary; both equivalence booleans false"
     },
     {
       "case_id": "M",
@@ -296,16 +240,16 @@
       "canonical_equivalent": true,
       "governance_equivalent": true,
       "replayable": true,
-      "decision_object_divergence": false,
-      "authority_assumption_divergence": false,
+      "public_decision_object_divergence": false,
+      "public_authority_assumption_divergence": false,
       "confirmed_fractures": [],
-      "exploratory_labels": [],
       "compare_invoked": true,
       "notes": "EXECUTABLE: key contains 'hash'; cleared by canonicalizer"
     }
   ],
   "review_conclusion": {
     "classification": "OVER-BROAD / UNSTABLE DIAGNOSTICS",
+    "remediation": "removed from public fracture_boundary; no replacement public labels; no new debug-output surface; independent unmasking deferred",
     "basis": [
       "hash-layer triggers",
       "mutually exclusive emission",
@@ -313,12 +257,13 @@
       "field-level over-breadth"
     ]
   },
-  "confirmed_fracture_set": [
+  "confirmed_public_fracture_set": [
     "no_governing_condition_translation_defined",
     "no_shared_canonical_reference"
   ],
-  "exploratory_diagnostic_set": [
+  "removed_from_public_fracture_boundary": [
     "authority_assumption_divergence",
     "decision_object_divergence"
-  ]
+  ],
+  "interface_rule": "An empty public fracture_boundary does not imply equivalence. Callers must read comparability_classification, canonical_equivalent, and governance_equivalent."
 }
