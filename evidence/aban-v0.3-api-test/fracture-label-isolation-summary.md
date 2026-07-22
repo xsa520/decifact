@@ -1,9 +1,9 @@
 # Fracture Label Isolation Summary
 
-**Repository:** `C:\Users\xsa52\decifact`  
-**Branch:** `feature/aban-admission-wrapper-v03`  
-**Base commit:** `2ff4b2e`  
-**Date:** 2026-07-22  
+**Repository:** `C:\Users\xsa52\decifact`
+**Branch:** `feature/aban-admission-wrapper-v03`
+**Base commit:** `2ff4b2e`
+**Date:** 2026-07-22
 
 ## Remediation (Phase 2 — public-output narrowing)
 
@@ -113,11 +113,12 @@ pre-remediation expectations.
 - Branch: `feature/aban-admission-wrapper-v03`
 - Isolation evidence/test commit: `e756158`
 - Publication-status sync commit: `4a4fc42`
-- Phase 2 public-output narrowing: **uncommitted — pending review**
+- Phase 2 public-output narrowing commit: `acc6673`
+- Phase 2 status: committed — not yet pushed
 - Remote branch: `origin/feature/aban-admission-wrapper-v03`
-- main has NOT been merged
-- no push of Phase 2 remediation
-- no production claim made
+- Push status (Phase 2): not pushed
+- main merged: no
+- production claim: no
 
 ### Explicit statement
 

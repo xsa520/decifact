@@ -1,9 +1,9 @@
 # ABAN × Decifact v0.3 — Test Summary
 
-**Repository:** `C:\Users\xsa52\decifact`  
-**Branch:** `feature/aban-admission-wrapper-v03`  
-**Base implementation commit:** `2ff4b2e`  
-**Isolation evidence/tests commit:** `e756158`  
+**Repository:** `C:\Users\xsa52\decifact`
+**Branch:** `feature/aban-admission-wrapper-v03`
+**Base implementation commit:** `2ff4b2e`
+**Isolation evidence/tests commit:** `e756158`
 **Publication-status sync commit:** `4a4fc42`
 
 ## Prior validated status (v0.3 admission wrapper)
@@ -13,7 +13,7 @@
 - Confirmed fractures: `no_shared_canonical_reference`, `no_governing_condition_translation_defined`
 - main not merged
 
-## Phase 2 — public-output narrowing (pending review)
+## Phase 2 — public-output narrowing
 
 Production change (narrowest): stop appending
 `decision_object_divergence` and `authority_assumption_divergence` to
@@ -75,8 +75,9 @@ generated `fracture-label-isolation-results.json`.)*
 
 - Isolation evidence/tests commit: `e756158`
 - Publication-status sync: `4a4fc42`
-- Phase 2 public-output narrowing: **uncommitted — pending review**
+- Phase 2 public-output narrowing commit: `acc6673`
+- Phase 2 status: committed — not yet pushed
 - Remote branch: `origin/feature/aban-admission-wrapper-v03`
-- Push status (Phase 2): **not pushed**
-- main merged: **no**
-- production claim: **no**
+- Push status (Phase 2): not pushed
+- main merged: no
+- production claim: no
