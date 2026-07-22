@@ -194,6 +194,20 @@ This is a first-class result, not an error condition.
 > operating on incommensurable decision logic. That is not a
 > deployment problem. It is a proof problem.
 
+### Reading `/compare` responses
+
+An empty public `fracture_boundary` does not imply equivalence.
+
+Callers must also inspect:
+
+- `comparability_classification`
+- `canonical_equivalent`
+- `governance_equivalent`
+
+The `fracture_boundary` contains public fracture reasons that the current
+interface is prepared to expose. It is not, by itself, a complete indicator
+of whether two runtimes are equivalent.
+
 Current releases use `policy_reference` equality as a Phase 1 proxy
 for shared canonical reference detection. This proxy is intentionally
 conservative and may classify some translatable governance frameworks
@@ -270,6 +284,8 @@ If no shared canonical reference exists, Decifact returns:
 ```json
 {
   "comparability_classification": "FORMALLY_INCOMPARABLE",
+  "canonical_equivalent": true,
+  "governance_equivalent": false,
   "fracture_boundary": [
     "no_shared_canonical_reference"
   ]

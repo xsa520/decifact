@@ -70,8 +70,12 @@ authority_context.admissibility_scope = "clinical-oversight"
 ### Expected response
 
 ```json
-{"comparability_classification":"FORMALLY_INCOMPARABLE","fracture_boundary":["no_shared_canonical_reference"],"replayable":true}
+{"comparability_classification":"FORMALLY_INCOMPARABLE","canonical_equivalent":true,"governance_equivalent":false,"fracture_boundary":["no_shared_canonical_reference"],"replayable":true}
 ```
+
+> An empty `fracture_boundary` does not mean the runtimes are equivalent.
+> Always read `comparability_classification`, `canonical_equivalent`, and
+> `governance_equivalent` together.
 
 ### What this means
 
