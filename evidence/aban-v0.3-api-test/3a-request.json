@@ -1,0 +1,25 @@
+{
+  "case_admission": {"declared_relationship": "none"},
+  "comparison": {
+    "runtime_a": {
+      "decision": {"intent": "deny_subsidy", "target": "national_id://synthetic-0001"},
+      "authority_context": {
+        "authority_domain": "ministry_of_agriculture",
+        "policy_reference": "AGRI-SEED-INPUT-ELIGIBILITY-2025-v2",
+        "execution_context": "subsidy_eligibility_review",
+        "admissibility_scope": "national_farmer_registry",
+        "governing_condition": "land-size eligibility cutoff breached"
+      }
+    },
+    "runtime_b": {
+      "decision": {"intent": "deny_credit", "target": "national_id://synthetic-0001"},
+      "authority_context": {
+        "authority_domain": "ministry_of_finance",
+        "policy_reference": "FIN-SME-CREDIT-ELIGIBILITY-2025-v1",
+        "execution_context": "credit_eligibility_review",
+        "admissibility_scope": "national_credit_registry",
+        "governing_condition": "debt-service coverage ratio below required minimum"
+      }
+    }
+  }
+}

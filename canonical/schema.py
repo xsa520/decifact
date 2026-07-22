@@ -7,6 +7,8 @@ class AuthorityContext(BaseModel):
     policy_reference: str
     execution_context: str
     admissibility_scope: Optional[str] = None
+    governing_condition: Optional[str] = None
+    governing_condition_translation_ref: Optional[str] = None
 
 
 class CanonicalBoundaryObject(BaseModel):

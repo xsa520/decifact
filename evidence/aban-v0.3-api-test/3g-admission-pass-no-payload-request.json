@@ -1,0 +1,15 @@
+{
+  "case_admission": {
+    "declared_relationship": "protected_rule_ref",
+    "invocation_record": {
+      "invoked_by": "RAO-node-agri-fin-liaison-07",
+      "authority_reference": "protected_rule://cross-ministry-fraud-screen-2025-v1",
+      "invocation_reason": "Protected rule requires a cross-ministry coordination review.",
+      "timestamp": "2026-07-15T09:12:00Z",
+      "sign_off": [
+        {"authorized_by": "RAO-officer-0231", "role": "RAO_Officer", "authorized_at": "2026-07-15T09:14:00Z"},
+        {"authorized_by": "ministry_of_finance-liaison-014", "role": "second_ministry_representative", "authorized_at": "2026-07-15T09:20:00Z"}
+      ]
+    }
+  }
+}

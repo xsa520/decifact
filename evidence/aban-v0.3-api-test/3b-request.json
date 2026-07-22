@@ -1,0 +1,37 @@
+{
+  "case_admission": {
+    "declared_relationship": "protected_rule_ref",
+    "invocation_record": {
+      "invoked_by": "RAO-node-agri-fin-liaison-07",
+      "authority_reference": "protected_rule://cross-ministry-fraud-screen-2025-v1",
+      "invocation_reason": "Protected rule requires a cross-ministry coordination review.",
+      "timestamp": "2026-07-15T09:12:00Z",
+      "sign_off": [
+        {"authorized_by": "RAO-officer-0231", "role": "RAO_Officer", "authorized_at": "2026-07-15T09:14:00Z"},
+        {"authorized_by": "ministry_of_finance-liaison-014", "role": "second_ministry_representative", "authorized_at": "2026-07-15T09:20:00Z"}
+      ]
+    }
+  },
+  "comparison": {
+    "runtime_a": {
+      "decision": {"intent": "deny_subsidy", "target": "national_id://synthetic-0001"},
+      "authority_context": {
+        "authority_domain": "ministry_of_agriculture",
+        "policy_reference": "AGRI-SEED-INPUT-ELIGIBILITY-2025-v2",
+        "execution_context": "subsidy_eligibility_review",
+        "admissibility_scope": "national_farmer_registry",
+        "governing_condition": "land-size eligibility cutoff breached"
+      }
+    },
+    "runtime_b": {
+      "decision": {"intent": "deny_credit", "target": "national_id://synthetic-0001"},
+      "authority_context": {
+        "authority_domain": "ministry_of_finance",
+        "policy_reference": "FIN-SME-CREDIT-ELIGIBILITY-2025-v1",
+        "execution_context": "credit_eligibility_review",
+        "admissibility_scope": "national_credit_registry",
+        "governing_condition": "debt-service coverage ratio below required minimum"
+      }
+    }
+  }
+}
