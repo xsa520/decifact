@@ -76,8 +76,8 @@ generated `fracture-label-isolation-results.json`.)*
 - Isolation evidence/tests commit: `e756158`
 - Publication-status sync: `4a4fc42`
 - Phase 2 public-output narrowing commit: `acc6673`
-- Phase 2 status: committed — not yet pushed
+- Phase 2 status: pushed to origin/feature/aban-admission-wrapper-v03
 - Remote branch: `origin/feature/aban-admission-wrapper-v03`
-- Push status (Phase 2): not pushed
+- Push status (Phase 2): pushed
 - main merged: no
 - production claim: no
