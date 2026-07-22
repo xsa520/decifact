@@ -126,11 +126,11 @@ python -m pytest -v
 *(Synchronize this block immediately before distribution.)*
 
 - Branch: `feature/aban-admission-wrapper-v03`
-- Base commit: `2ff4b2e`
-- Isolation work: included in this evidence package
-- **main has NOT been merged**
-- **no push performed** as part of this isolation work
-- **no production claim made**
+- Isolation evidence/test commit: `e756158`
+- Remote branch: `origin/feature/aban-admission-wrapper-v03`
+- Isolation work has been pushed
+- main has NOT been merged
+- no production claim made
 
 ### Explicit statement
 

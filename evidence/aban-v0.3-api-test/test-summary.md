@@ -3,7 +3,7 @@
 **Repository:** `C:\Users\xsa52\decifact`  
 **Branch:** `feature/aban-admission-wrapper-v03`  
 **Base implementation commit:** `2ff4b2e`  
-**Isolation evidence/tests:** included in this commit
+**Isolation evidence/tests commit:** `e756158`
 
 ## Prior validated status (v0.3 admission wrapper)
 
@@ -51,6 +51,8 @@ Confirmed fractures alone do.
 *(Human-maintained — synchronize before distribution; not stored in
 generated `fracture-label-isolation-results.json`.)*
 
+- Isolation evidence/tests commit: `e756158`
+- Remote branch: `origin/feature/aban-admission-wrapper-v03`
+- Push status: **pushed**
 - main merged: **no**
-- push performed (this work): **no**
 - production claim: **no**
