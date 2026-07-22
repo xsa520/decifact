@@ -1,0 +1,324 @@
+{
+  "owner_repository": "C:\\Users\\xsa52\\decifact",
+  "branch": "feature/aban-admission-wrapper-v03",
+  "matrix_cases": [
+    {
+      "case_id": "baseline",
+      "changed_fields": [],
+      "comparability_classification": "EQUIVALENT",
+      "fracture_boundary": [],
+      "canonical_equivalent": true,
+      "governance_equivalent": true,
+      "replayable": true,
+      "decision_object_divergence": false,
+      "authority_assumption_divergence": false,
+      "confirmed_fractures": [],
+      "exploratory_labels": [],
+      "compare_invoked": true,
+      "notes": "identical runtimes"
+    },
+    {
+      "case_id": "A",
+      "changed_fields": [
+        "decision.intent"
+      ],
+      "comparability_classification": "NON_EQUIVALENT",
+      "fracture_boundary": [
+        "decision_object_divergence"
+      ],
+      "canonical_equivalent": false,
+      "governance_equivalent": true,
+      "replayable": true,
+      "decision_object_divergence": true,
+      "authority_assumption_divergence": false,
+      "confirmed_fractures": [],
+      "exploratory_labels": [
+        "decision_object_divergence"
+      ],
+      "compare_invoked": true,
+      "notes": ""
+    },
+    {
+      "case_id": "B",
+      "changed_fields": [
+        "decision.target"
+      ],
+      "comparability_classification": "NON_EQUIVALENT",
+      "fracture_boundary": [
+        "decision_object_divergence"
+      ],
+      "canonical_equivalent": false,
+      "governance_equivalent": true,
+      "replayable": true,
+      "decision_object_divergence": true,
+      "authority_assumption_divergence": false,
+      "confirmed_fractures": [],
+      "exploratory_labels": [
+        "decision_object_divergence"
+      ],
+      "compare_invoked": true,
+      "notes": ""
+    },
+    {
+      "case_id": "C",
+      "changed_fields": [
+        "authority_context.authority_domain"
+      ],
+      "comparability_classification": "NON_EQUIVALENT",
+      "fracture_boundary": [
+        "authority_assumption_divergence"
+      ],
+      "canonical_equivalent": true,
+      "governance_equivalent": false,
+      "replayable": true,
+      "decision_object_divergence": false,
+      "authority_assumption_divergence": true,
+      "confirmed_fractures": [],
+      "exploratory_labels": [
+        "authority_assumption_divergence"
+      ],
+      "compare_invoked": true,
+      "notes": ""
+    },
+    {
+      "case_id": "D",
+      "changed_fields": [
+        "authority_context.policy_reference"
+      ],
+      "comparability_classification": "FORMALLY_INCOMPARABLE",
+      "fracture_boundary": [
+        "no_shared_canonical_reference",
+        "authority_assumption_divergence"
+      ],
+      "canonical_equivalent": true,
+      "governance_equivalent": false,
+      "replayable": true,
+      "decision_object_divergence": false,
+      "authority_assumption_divergence": true,
+      "confirmed_fractures": [
+        "no_shared_canonical_reference"
+      ],
+      "exploratory_labels": [
+        "authority_assumption_divergence"
+      ],
+      "compare_invoked": true,
+      "notes": ""
+    },
+    {
+      "case_id": "E",
+      "changed_fields": [
+        "authority_context.governing_condition"
+      ],
+      "comparability_classification": "FORMALLY_INCOMPARABLE",
+      "fracture_boundary": [
+        "no_governing_condition_translation_defined",
+        "authority_assumption_divergence"
+      ],
+      "canonical_equivalent": true,
+      "governance_equivalent": false,
+      "replayable": true,
+      "decision_object_divergence": false,
+      "authority_assumption_divergence": true,
+      "confirmed_fractures": [
+        "no_governing_condition_translation_defined"
+      ],
+      "exploratory_labels": [
+        "authority_assumption_divergence"
+      ],
+      "compare_invoked": true,
+      "notes": "no translation_ref"
+    },
+    {
+      "case_id": "F",
+      "changed_fields": [
+        "authority_context.governing_condition",
+        "authority_context.governing_condition_translation_ref (same on both)"
+      ],
+      "comparability_classification": "NON_EQUIVALENT",
+      "fracture_boundary": [
+        "authority_assumption_divergence"
+      ],
+      "canonical_equivalent": true,
+      "governance_equivalent": false,
+      "replayable": true,
+      "decision_object_divergence": false,
+      "authority_assumption_divergence": true,
+      "confirmed_fractures": [],
+      "exploratory_labels": [
+        "authority_assumption_divergence"
+      ],
+      "compare_invoked": true,
+      "notes": "shared valid translation_ref; confirmed translation fracture absent"
+    },
+    {
+      "case_id": "G",
+      "changed_fields": [
+        "authority_context.execution_context"
+      ],
+      "comparability_classification": "NON_EQUIVALENT",
+      "fracture_boundary": [
+        "authority_assumption_divergence"
+      ],
+      "canonical_equivalent": true,
+      "governance_equivalent": false,
+      "replayable": true,
+      "decision_object_divergence": false,
+      "authority_assumption_divergence": true,
+      "confirmed_fractures": [],
+      "exploratory_labels": [
+        "authority_assumption_divergence"
+      ],
+      "compare_invoked": true,
+      "notes": ""
+    },
+    {
+      "case_id": "H",
+      "changed_fields": [
+        "authority_context.admissibility_scope"
+      ],
+      "comparability_classification": "NON_EQUIVALENT",
+      "fracture_boundary": [
+        "authority_assumption_divergence",
+        "acceptance_context_mismatch"
+      ],
+      "canonical_equivalent": true,
+      "governance_equivalent": false,
+      "replayable": true,
+      "decision_object_divergence": false,
+      "authority_assumption_divergence": true,
+      "confirmed_fractures": [],
+      "exploratory_labels": [
+        "authority_assumption_divergence"
+      ],
+      "compare_invoked": true,
+      "notes": "may also emit acceptance_context_mismatch"
+    },
+    {
+      "case_id": "I",
+      "changed_fields": [
+        "authority_context.governing_condition_translation_ref"
+      ],
+      "comparability_classification": "NON_EQUIVALENT",
+      "fracture_boundary": [
+        "authority_assumption_divergence"
+      ],
+      "canonical_equivalent": true,
+      "governance_equivalent": false,
+      "replayable": true,
+      "decision_object_divergence": false,
+      "authority_assumption_divergence": true,
+      "confirmed_fractures": [],
+      "exploratory_labels": [
+        "authority_assumption_divergence"
+      ],
+      "compare_invoked": true,
+      "notes": "governing_condition identical"
+    },
+    {
+      "case_id": "J",
+      "changed_fields": [
+        "multi-field 3b structure"
+      ],
+      "comparability_classification": "FORMALLY_INCOMPARABLE",
+      "fracture_boundary": [
+        "no_shared_canonical_reference",
+        "no_governing_condition_translation_defined",
+        "decision_object_divergence"
+      ],
+      "canonical_equivalent": false,
+      "governance_equivalent": false,
+      "replayable": true,
+      "decision_object_divergence": true,
+      "authority_assumption_divergence": false,
+      "confirmed_fractures": [
+        "no_shared_canonical_reference",
+        "no_governing_condition_translation_defined"
+      ],
+      "exploratory_labels": [
+        "decision_object_divergence"
+      ],
+      "compare_invoked": true,
+      "notes": "current 3b multi-field fixture"
+    },
+    {
+      "case_id": "K",
+      "changed_fields": [
+        "multi-field 3e structure"
+      ],
+      "comparability_classification": "FORMALLY_INCOMPARABLE",
+      "fracture_boundary": [
+        "no_governing_condition_translation_defined",
+        "authority_assumption_divergence"
+      ],
+      "canonical_equivalent": true,
+      "governance_equivalent": false,
+      "replayable": true,
+      "decision_object_divergence": false,
+      "authority_assumption_divergence": true,
+      "confirmed_fractures": [
+        "no_governing_condition_translation_defined"
+      ],
+      "exploratory_labels": [
+        "authority_assumption_divergence"
+      ],
+      "compare_invoked": true,
+      "notes": "current 3e multi-field fixture"
+    },
+    {
+      "case_id": "L",
+      "changed_fields": [
+        "decision.intent",
+        "authority_context.authority_domain"
+      ],
+      "comparability_classification": "NON_EQUIVALENT",
+      "fracture_boundary": [
+        "decision_object_divergence"
+      ],
+      "canonical_equivalent": false,
+      "governance_equivalent": false,
+      "replayable": true,
+      "decision_object_divergence": true,
+      "authority_assumption_divergence": false,
+      "confirmed_fractures": [],
+      "exploratory_labels": [
+        "decision_object_divergence"
+      ],
+      "compare_invoked": true,
+      "notes": "masking case: authority exploratory suppressed"
+    },
+    {
+      "case_id": "M",
+      "changed_fields": [
+        "decision.content_hash"
+      ],
+      "comparability_classification": "EQUIVALENT",
+      "fracture_boundary": [],
+      "canonical_equivalent": true,
+      "governance_equivalent": true,
+      "replayable": true,
+      "decision_object_divergence": false,
+      "authority_assumption_divergence": false,
+      "confirmed_fractures": [],
+      "exploratory_labels": [],
+      "compare_invoked": true,
+      "notes": "EXECUTABLE: key contains 'hash'; cleared by canonicalizer"
+    }
+  ],
+  "review_conclusion": {
+    "classification": "OVER-BROAD / UNSTABLE DIAGNOSTICS",
+    "basis": [
+      "hash-layer triggers",
+      "mutually exclusive emission",
+      "authority divergence masking",
+      "field-level over-breadth"
+    ]
+  },
+  "confirmed_fracture_set": [
+    "no_governing_condition_translation_defined",
+    "no_shared_canonical_reference"
+  ],
+  "exploratory_diagnostic_set": [
+    "authority_assumption_divergence",
+    "decision_object_divergence"
+  ]
+}
