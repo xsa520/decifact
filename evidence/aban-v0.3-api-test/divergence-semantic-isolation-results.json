@@ -1,0 +1,51 @@
+{
+  "experiment": "decision-authority-divergence-semantic-isolation",
+  "spec_version": "v0.3.1",
+  "spec_path": "docs/experiments/decision-authority-divergence-isolation-v03.md",
+  "already_covered_elsewhere": {
+    "M1": "test_baseline_identical_no_removed_public_labels",
+    "M2": "test_case_a_decision_intent_only",
+    "M3": "test_case_c_authority_domain_only",
+    "M4": "test_case_l_masking_decision_and_authority_together",
+    "S3": "test_case_h_admissibility_scope_only",
+    "S4": "same case as M3",
+    "S7": "same case as M4",
+    "R1": "guaranteed by sort_keys=True; no dedicated test",
+    "R2": "covered in spirit by test_case_m",
+    "R4": "partially covered by test_case_i"
+  },
+  "deferred_schema_questions_not_tested": [
+    "D1",
+    "D2",
+    "D3"
+  ],
+  "characterization_results": [
+    {
+      "case_id": "S5a",
+      "open_question": "Does canonical_decision_hash scope over case-instance identity (citizen_reference / decision.target), or only over decision semantic form (intent, governing policy)?",
+      "changed_fields": [
+        "decision.target"
+      ],
+      "canonical_equivalent": false,
+      "governance_equivalent": true,
+      "comparability_classification": "NON_EQUIVALENT",
+      "fracture_boundary": [],
+      "mechanical_disposition": "canonical_decision_hash_mismatch=True, authority_context_hash_mismatch=False",
+      "semantic_disposition": "UNRESOLVED_SEMANTICS"
+    },
+    {
+      "case_id": "S6",
+      "open_question": "Is there such a thing as 'the same decision, differently labeled' in ABAN's model, or is every distinct label a distinct decision by definition? The fixture used here (deny_subsidy vs. subsidy_denied) is a constructed candidate synonym, not a domain-confirmed equivalent pair.",
+      "changed_fields": [
+        "decision.intent (candidate synonym)"
+      ],
+      "canonical_equivalent": false,
+      "governance_equivalent": true,
+      "comparability_classification": "NON_EQUIVALENT",
+      "fracture_boundary": [],
+      "mechanical_disposition": "canonical_decision_hash_mismatch=True, authority_context_hash_mismatch=False",
+      "semantic_disposition": "UNRESOLVED_SEMANTICS"
+    }
+  ],
+  "note": "S5a and S6 are characterization tests. Their mechanical results are recorded as evidence. Semantic disposition remains UNRESOLVED_SEMANTICS for both pending Rindai input -- this file does not resolve either open question."
+}
