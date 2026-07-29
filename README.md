@@ -144,9 +144,15 @@ Comparability therefore begins only after transferability has already been estab
 
 Decifact evaluates comparability after that prerequisite has been satisfied.
 
-Transferability itself remains outside the scope of Decifact.
+Comparability does not create transferability. Where a judgment has
+been carried across a governance boundary, Decifact requires the
+relevant transfer and governing context to be represented as part
+of the comparison basis. It does not independently authorize that
+transfer or determine whether the receiving party may rely on it.
 
-Decifact assumes that transferability, when required, has already been established.
+Transferability itself remains outside the scope of Decifact. A
+technically available judgment is not automatically admissible as
+comparison evidence.
 
 ### Governance Object
 
@@ -187,6 +193,44 @@ Determines whether two decisions share the same **invariant boundary** — the m
 - **Minimal**: no LLM calls, no external dependencies
 - **Composable**: works alongside any agent framework
 - **Independent**: sits outside the systems it evaluates — no shared write domain, no equity in either system
+
+---
+
+## Where Decifact Fits in the Governance Chain
+
+Cross-system coordination involves several distinct governance
+questions, not one:
+
+1. **Referent continuity** — do the judgments still concern the
+   same governed object?
+2. **Governing-basis currency** — are the relevant definitions,
+   authority conditions, evidence thresholds, and time states
+   still current?
+3. **Comparison determination** — do the judgments share a valid
+   comparison basis, and if so, are they equivalent or
+   non-equivalent?
+4. **Reliance authority** — may a receiving party rely on the
+   comparison result for a particular purpose?
+5. **Execution admissibility** — may the resulting action proceed
+   under current conditions?
+6. **Runtime continuity** — do the governing conditions remain
+   valid as execution continues?
+7. **Evidence reconciliation** — were all required evaluations
+   completed and preserved as reviewable evidence?
+
+Decifact is scoped primarily to the comparison determination in
+Layer 3.
+
+It requires the relevant comparison inputs from Layers 1 and 2 to
+be represented. It does not independently establish ongoing
+authority, authorize reliance, determine execution admissibility,
+govern runtime continuation, or discharge downstream evidentiary
+obligations — those remain separate governance layers, each with
+its own responsible party.
+
+A Decifact result describes the relationship between two
+judgments. It does not authorize what any system should do with
+that result.
 
 ---
 
@@ -257,12 +301,45 @@ This is a first-class result, not an error condition.
 > operating on incommensurable decision logic. That is not a
 > deployment problem. It is a proof problem.
 
-Current releases use `policy_reference` equality as a Phase 1 proxy
-for shared canonical reference detection. This proxy is intentionally
-conservative and may classify some translatable governance frameworks
-as formally incomparable until reference translation mechanisms are
-introduced. Future releases will extend this with reference translation
-admissibility and authority translation mechanisms (Guardian v0.3).
+The current Phase 1 implementation uses `policy_reference`
+equality as a proxy for shared canonical reference detection. This
+proxy is intentionally conservative and may classify some
+translatable governance frameworks as formally incomparable until
+reference translation mechanisms are introduced. Future releases
+will extend this with reference translation admissibility and
+authority translation mechanisms (Guardian v0.3).
+
+### Failure-Semantic Preservation (Design Direction)
+
+A comparison result should preserve more than a terminal
+classification.
+
+Where applicable, a future determination record should distinguish:
+
+- which comparison prerequisite was evaluated;
+- which boundary failed or remained unresolved;
+- which downstream checks were not evaluated because a
+  prerequisite was not established;
+- the governing reference and rule version used;
+- the evidence considered; and
+- whether the result is reconstructable from the preserved inputs.
+
+For example, failing to establish that two judgments concern the
+same governed object is not the same outcome as establishing a
+shared object and then finding different governing conditions. A
+downstream check may be `NOT_EVALUATED` rather than
+`NON_EQUIVALENT` when its required referent was never established.
+
+The Phase 1 implementation currently returns a flat
+`fracture_boundary` list of reason codes. It does not yet
+distinguish classification-driving failures, additional evaluated
+diagnostics, and checks that were not evaluated because a
+prerequisite was not established. Staged, per-prerequisite result
+tracking is a design direction for a later phase, not a current
+API guarantee.
+
+See [docs/implementation-items.md](docs/implementation-items.md)
+for the corresponding bounded implementation item.
 
 ---
 
@@ -301,6 +378,26 @@ That is a different question from comparability itself.
 Comparability does not determine whether a decision should be executed.
 
 A decision may be comparable and still be inadmissible.
+
+### Reliance Authority
+
+A comparability result does not determine whether a receiving party
+is authorized to rely on that result for a particular purpose,
+context, or consequence.
+
+A judgment may be comparable yet not authorized for use.
+
+### Temporal Currency
+
+A comparison result is valid only for the governing objects,
+references, evidence, and time states represented in that
+determination.
+
+A prior comparison result does not automatically remain current
+after a relevant governing condition changes. A later comparison
+may establish a new current state. It does not retroactively
+validate reliance that occurred during an earlier, unconfirmed
+interval.
 
 ---
 
@@ -567,10 +664,16 @@ Specification: [xsa520/guardian](https://github.com/xsa520/guardian)
 
 ## Status
 
-Stable for equivalence verification in controlled environments.
-Deployed instances processing live decisions since 2026-01.
+Research implementation for controlled comparability experiments.
 
-Operational substrate: Alpha System — running since 2026-02-11, RFC3161 evidence chain, 77+ replay cycles. Internal only.
+The concepts are informed by an internally operated governance
+deployment (Alpha System — running since 2026-02-11, RFC3161
+evidence chain, 77+ replay cycles, internal only) and
+replay-based evaluation. Decifact itself remains scoped to
+research, specification development, and controlled reference use.
+
+It is not a production authorization, execution, or
+runtime-governance service.
 
 ---
 
