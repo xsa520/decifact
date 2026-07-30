@@ -1,3 +1,17 @@
+> [!WARNING]
+> This document reflects the terminology used by the historical
+> ABAN admission-wrapper test branch.
+>
+> It is not the current Decifact comparison model. The current model
+> distinguishes `EQUIVALENT`, `NON_EQUIVALENT`, and
+> `FORMALLY_INCOMPARABLE`, and does not treat comparison
+> determination as proof that two judgments are generically
+> “the same decision.”
+>
+> See the [`main`](https://github.com/xsa520/decifact/tree/main) branch for current documentation.
+
+---
+
 ## Clarification: This is not comparison
 
 This is not a generic comparison tool.
