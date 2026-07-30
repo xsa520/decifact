@@ -1,3 +1,18 @@
+> [!IMPORTANT]
+> This quickstart exercises the historical ABAN admission-wrapper
+> branch, not the current general Decifact implementation on `main`.
+>
+> Results are valid only under this branch's implemented comparison
+> and governing-condition-translation rules. They do not establish
+> reliance authority, execution admissibility, or a generally
+> transferable comparison basis.
+>
+> The `replayable: true` response field is a static implementation
+> marker. It does not report that an actual replay was performed or
+> that all reconstruction materials are available.
+
+---
+
 ## 1. The Problem
 
 Two AI systems can each have valid governance records, pass every audit, and still be operating on incommensurable decision logic.
