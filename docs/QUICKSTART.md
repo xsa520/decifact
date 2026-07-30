@@ -38,6 +38,15 @@ Is this a disagreement — or an incomparability?
 
 > FORMALLY_INCOMPARABLE is not an error. It is a first-class governance result.
 
+> **Current implementation note**
+>
+> Shared-reference detection currently uses exact `policy_reference`
+> equality as a Phase 1 proxy. A `FORMALLY_INCOMPARABLE` result
+> therefore means no shared basis was detected under that proxy; it
+> does not rule out a separately governed translation mechanism.
+>
+> Classification result ≠ permission to rely or execute.
+
 ## 4. Quickstart (5 minutes)
 
 The example below runs Scenario A (Hospital Triage) — two independently approved systems being checked against each other before coordination begins.
@@ -75,11 +84,26 @@ authority_context.admissibility_scope = "clinical-oversight"
 {"comparability_classification":"FORMALLY_INCOMPARABLE","fracture_boundary":["no_shared_canonical_reference"],"replayable":true}
 ```
 
+> **Replayability note**
+>
+> The current `replayable: true` value is a static implementation
+> marker. It does not mean that replay was performed, that a replay
+> engine is available, or that all materials required for independent
+> reconstruction have been preserved.
+>
+> See `docs/implementation-items.md` for the deferred response-model
+> review.
+
 ### What this means
 
-The hospitals are not disagreeing.
-They are operating under different governance references.
-Coordination between them would require establishing a shared canonical reference first — not just exchanging data.
+The hospitals are not classified as disagreeing under the current
+evaluation model.
+
+Their `policy_reference` values differ, so the Phase 1 proxy did not
+establish a shared comparison basis. Coordination would therefore
+require a separately established comparison basis or translation
+mechanism before this implementation could treat the judgments as
+comparable.
 
 ## 5. Three Endpoints
 
