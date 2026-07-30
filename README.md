@@ -272,7 +272,7 @@ that result.
 
 Decifact does not govern either system.
 It does not transfer authority between them.
-It exposes whether their decisions share the invariant boundary required for meaningful coordination.
+It exposes whether their decisions match the comparison conditions represented under the implementation's current invariant-boundary and field-exclusion rules.
 
 **This question must be answered before coordination begins — not after consequences have already formed.**
 
@@ -488,7 +488,8 @@ The question is:
 
 > Was anyone checking whether these two "valid" decisions could ever be placed on the same basis to begin with?
 
-If no shared canonical reference exists, Decifact returns:
+When the current `policy_reference`-equality proxy does not establish
+a shared canonical reference, Decifact returns:
 
 ```json
 {
