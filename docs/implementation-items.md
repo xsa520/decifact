@@ -79,10 +79,11 @@ still lose category 2 (diagnostics computed but not surfaced).
 **Non-goal for this item:**
 
 Do not change the Phase 1 `policy_reference` proxy logic. Do not
-introduce reference translation (`REQUIRES_REFERENCE_TRANSLATION`,
-Guardian v0.3 territory) in the same patch. This item is scoped
-strictly to *response completeness for information already
-computed*, not to *expanding what gets computed*.
+introduce reference translation or any broader shared-reference
+mechanism in the same patch. Such work would require a separate
+specification, evidence threshold, and implementation decision. This
+item is scoped strictly to *response completeness for information
+already computed*, not to *expanding what gets computed*.
 
 ```
 Failure-semantic preservation  ≠  Reference-translation implementation
@@ -101,3 +102,111 @@ category 2 above (evaluated-but-discarded diagnostics).
 `NOT_EVALUATED` (category 3) is a distinct state that a future
 staged prerequisite-evaluation model must be able to represent — it
 is not something this implementation currently produces.
+
+---
+
+## Item 2 — Define explicit canonical-field inclusion semantics
+
+**Status:** OBSERVED, NOT PATCHED. Recorded for future implementation.
+
+**Observed** (`canonical/canonicalize.py`, `compute_canonical_hash`):
+
+```python
+cleaned = {
+    k: ("" if "hash" in k.lower()
+            or "reference" in k.lower()
+        else v)
+    for k, v in canonical_object.items()
+}
+```
+
+This blanks every top-level field whose key *contains* `"hash"` or
+`"reference"` as a substring — not an exact-match exclusion list.
+For example, `policy_reference`, `evidence_hash`, `model_reference`,
+`authority_reference`, and `input_hash` would all be excluded,
+including any of these that turn out to be substantive decision
+fields rather than provenance/transport metadata. The exclusion also
+only applies to top-level keys; nested fields with the same
+substrings are not treated consistently with their top-level
+counterparts.
+
+**Required review:**
+
+- define which fields are constitutionally excluded, by exact name,
+  not substring match;
+- define nested-field behavior explicitly;
+- add positive and negative test vectors covering the exclusion
+  boundary;
+- make any backward-compatibility decision explicit rather than
+  implicit.
+
+**Non-goal for this item:** Do not assume the current substring-based
+exclusion was unintentional. It may have been a deliberate early
+choice to exclude provenance/transport fields. This item is about
+formalizing the contract, not assuming the current behavior is wrong.
+
+**Relation to README:** Until this review is complete, the README
+should describe canonicalization as operating "under its present
+field-exclusion rules" (implementation-defined), not as extracting
+an unqualified "minimal semantic set."
+
+---
+
+## Item 3 — `replayable` field is a static marker, not a verified outcome
+
+**Status:** OBSERVED, NOT PATCHED. Recorded for future implementation.
+
+**Observed** (`app/routes/compare.py`): every `/compare` response
+returns `"replayable": true` unconditionally. The code does not
+check whether decision-time inputs were preserved, whether a
+versioned policy snapshot exists, whether a replay engine is
+available, whether the authority context can be reconstructed, or
+whether a replay was actually attempted and produced a consistent
+result.
+
+**Required review — candidate future field model:**
+
+```
+replay_status:
+  NOT_EVALUATED
+  MATERIALS_AVAILABLE
+  REPLAYED_CONSISTENT
+  REPLAYED_INCONSISTENT
+  INSUFFICIENT_MATERIAL
+```
+
+**Non-goal for this item:** Do not change the API field in the same
+pass as documentation clarifications. This is a breaking response-
+schema change and should be scoped and versioned separately.
+
+**Relation to README:** The README now states that `replayable` is a
+static implementation marker, not a report that replay occurred or
+that reconstruction materials are available. This item tracks the
+corresponding code-level fix.
+
+---
+
+## Item 4 — Phase 1 shared-reference proxy: versioning and evolution path
+
+**Status:** OPEN — not yet scheduled.
+
+The `policy_reference`-equality proxy used for shared canonical
+reference detection is explicitly Phase 1.
+
+If a later, separately specified mechanism broadens shared-reference
+detection, this item tracks:
+
+- how a `FORMALLY_INCOMPARABLE` result produced under Phase 1 should
+  be distinguished from one produced under a later, broader
+  detection mechanism (e.g. a `detection_method` or `proxy_version`
+  field in the response);
+- whether historical `/compare` results computed under Phase 1 would
+  need to be re-evaluated if a later phase changes what counts as a
+  shared reference;
+- that this evolution is independent of, and must not be bundled
+  with, Items 1–3 above.
+
+**Non-goal for this item:** This item does not commit to building
+reference translation. It only tracks how the response model should
+represent *which* detection mechanism produced a given result, if
+and when that mechanism changes.
