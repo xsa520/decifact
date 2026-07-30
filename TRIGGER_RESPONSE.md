@@ -1,45 +1,18 @@
-## Clarification: This is not comparison
+# Clarification: Comparison Determination Is Not Generic Comparison
 
-This is not a generic comparison tool.
+Decifact first determines whether a valid comparison basis is
+represented under the implemented evaluation model.
 
-What is being evaluated here is **decision equivalence**.
+Possible outcomes:
 
----
+- `EQUIVALENT`
+- `NON_EQUIVALENT`
+- `FORMALLY_INCOMPARABLE`
 
-## Definition
+`FORMALLY_INCOMPARABLE` means the implementation did not establish
+the prerequisite comparison basis. It is distinct from a completed
+comparison that found non-equivalence.
 
-Equivalence is defined strictly as **invariant boundary equality**.
-
-Two decisions are equivalent if and only if their invariant representations match.
-
----
-
-## Important distinctions
-
-- Hash equality is neither necessary nor sufficient for equivalence
-- Structural similarity does not imply equivalence
-- Execution results are not a valid proxy for equivalence
-
----
-
-## What this engine does
-
-1. Extracts the invariant boundary of each decision
-2. Canonicalizes the invariant representation
-3. Compares the resulting canonical forms
-4. Produces a deterministic equivalence result
-
----
-
-## Implication
-
-If two systems produce different outputs under this model,
-the difference is not interpretational - it is structural.
-
----
-
-## Summary
-
-This is not about comparing outputs.
-
-This is about determining whether two decisions are **the same decision**.
+A Decifact result describes a relationship between judgments. It does
+not establish correctness, reliance authority, execution
+admissibility, or runtime permission.
