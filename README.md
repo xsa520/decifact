@@ -1,3 +1,21 @@
+> [!IMPORTANT]
+> ## Historical ABAN Admission-Wrapper Test Branch
+>
+> This branch preserves the ABAN × Decifact v0.3 admission-wrapper
+> experiment and its associated test evidence.
+>
+> It was not merged into `main`, is not a production release, and is
+> not the current Decifact specification or general reference
+> implementation.
+>
+> Current project positioning and implementation documentation are
+> maintained on the [`main`](https://github.com/xsa520/decifact/tree/main) branch.
+>
+> The code and evidence in this branch are preserved as a bounded
+> historical experiment. Branch-specific behavior, including
+> governing-condition translation handling, must not be generalized
+> into current Decifact semantics without a separate review.
+
 ---
 
 👉 **New here? Start with [QUICKSTART.md](docs/QUICKSTART.md)** — understand and run Decifact in 5 minutes.
