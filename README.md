@@ -34,7 +34,11 @@ Decifact determines:
 - **`NON_EQUIVALENT`**
 - **`FORMALLY_INCOMPARABLE`**
 
-and identifies the fracture boundary responsible for the result.
+and returns the classification-driving fracture boundary currently
+preserved by the implementation.
+
+Additional evaluated diagnostics may not yet be retained in all
+classification paths; see `docs/implementation-items.md`.
 
 ---
 
@@ -186,13 +190,20 @@ The purpose is to determine whether the decisions were ever established on a com
 
 ## What This Does
 
-Determines whether two decisions share the same **invariant boundary** — the minimal semantic set that defines a decision, independent of execution artifacts, transport encoding, or system-specific representation.
+Determines whether two decisions match under the implementation's
+current invariant-boundary and field-exclusion rules.
+
+The current canonicalization logic produces a deterministic
+representation under implementation-defined exclusions. Those
+exclusion boundaries have not yet been formalized as a complete
+constitutional definition of the minimal semantic set; see
+`docs/implementation-items.md`.
 
 - **Deterministic**: same input always produces same output
 - **Transparent**: differences are explicit, not opaque
-- **Minimal**: no LLM calls, no external dependencies
+- **Minimal**: no LLM calls, and no external network service is required for the core comparison logic
 - **Composable**: works alongside any agent framework
-- **Independent**: sits outside the systems it evaluates — no shared write domain, no equity in either system
+- **Independent by design**: intended for deployment outside the systems being compared. Actual independence, custody separation, and write-domain separation must be established by the deployment environment; they are not created by this codebase alone.
 
 ---
 
@@ -292,9 +303,11 @@ A shared comparison basis exists, but governance conditions differ.
 The comparison is valid; the result is disagreement.
 
 **`FORMALLY_INCOMPARABLE`**
-No shared comparison basis was detected.
-The systems may each be internally valid, but comparison cannot
-produce a meaningful equivalence finding.
+The current implementation did not detect a shared comparison basis
+under its Phase 1 `policy_reference` equality proxy.
+This is a valid result within the implemented evaluation model. It
+does not prove that no translation or comparison basis could be
+established by a broader mechanism.
 This is a first-class result, not an error condition.
 
 > Two systems can each have valid governance records and still be
@@ -304,10 +317,15 @@ This is a first-class result, not an error condition.
 The current Phase 1 implementation uses `policy_reference`
 equality as a proxy for shared canonical reference detection. This
 proxy is intentionally conservative and may classify some
-translatable governance frameworks as formally incomparable until
-reference translation mechanisms are introduced. Future releases
-will extend this with reference translation admissibility and
-authority translation mechanisms (Guardian v0.3).
+translatable governance frameworks as formally incomparable under
+this proxy.
+
+Guardian V0.3 examines constitutional conditions and prohibitions
+surrounding cross-domain acceptance. Decifact does not implement
+acceptance, authority translation, or reliance authorization. Any
+future work in those areas would require a separate specification
+and evidence threshold — it is not a committed roadmap item of this
+implementation.
 
 ### Failure-Semantic Preservation (Design Direction)
 
@@ -331,12 +349,19 @@ downstream check may be `NOT_EVALUATED` rather than
 `NON_EQUIVALENT` when its required referent was never established.
 
 The Phase 1 implementation currently returns a flat
-`fracture_boundary` list of reason codes. It does not yet
-distinguish classification-driving failures, additional evaluated
-diagnostics, and checks that were not evaluated because a
-prerequisite was not established. Staged, per-prerequisite result
-tracking is a design direction for a later phase, not a current
-API guarantee.
+`fracture_boundary` list of reason codes.
+
+Its current evaluation flow computes all implemented fracture
+checks, but some evaluated, non-classification-driving diagnostics
+may be discarded when the terminal classification is returned.
+
+The current flow does not yet produce genuinely skipped
+`NOT_EVALUATED` checks. That state would become necessary only if a
+future staged evaluation model introduces prerequisite-dependent
+short-circuiting.
+
+Staged, per-prerequisite result tracking remains a design direction,
+not a current API guarantee.
 
 See [docs/implementation-items.md](docs/implementation-items.md)
 for the corresponding bounded implementation item.
@@ -478,7 +503,11 @@ This is a first-class governance finding.
 
 The result does not indicate failure, disagreement, or policy violation.
 
-It indicates that the systems cannot be placed on the same comparison basis without one jurisdiction inheriting the authority assumptions of the other.
+It indicates that the current `policy_reference`-equality proxy did
+not find these systems on the same comparison basis, without one
+jurisdiction inheriting the authority assumptions of the other. It
+does not rule out a translation mechanism a broader implementation
+could establish.
 
 ---
 
@@ -586,10 +615,16 @@ records but operating under different policy foundations:
 }
 ```
 
-`FORMALLY_INCOMPARABLE` means: these systems cannot be placed on
+`FORMALLY_INCOMPARABLE` means: under the current
+`policy_reference`-equality proxy, these systems were not placed on
 the same comparison reference without one jurisdiction inheriting
 the other's authority assumptions. The finding is structural,
 not a disagreement about outcomes.
+
+The `replayable` field is a static implementation marker. It does
+not report that an actual replay was performed, or that all
+materials required for independent reconstruction are available.
+See `docs/implementation-items.md` for tracked follow-up work.
 
 ---
 
@@ -634,7 +669,7 @@ Decifact evaluates **comparability** and **equivalence** (Guardian v0.2).
 |---------|-------|
 | Comparability classification | ✅ This engine |
 | Decision equivalence | ✅ This engine |
-| Decision acceptance | ❌ Guardian v0.3 (upcoming) |
+| Reliance authority / acceptance | ❌ Separate governance responsibility |
 | Execution correctness | ❌ Out of scope |
 | Identity validation | ❌ Out of scope |
 | Runtime policy enforcement | ❌ Out of scope — a different layer |
@@ -656,7 +691,10 @@ Decifact is the reference implementation of Guardian v0.2 Decision Equivalence S
 
 Guardian defines the constitutional conditions under which independently governed systems can determine whether their decisions remain canonically comparable without inheriting each other's jurisdiction.
 
-Guardian v0.3 (acceptance layer) will build on this equivalence primitive.
+Guardian V0.3 examines the constitutional conditions and
+prohibitions surrounding cross-domain acceptance. It is a separate
+research question from decision equivalence, not a planned
+extension of this codebase.
 
 Specification: [xsa520/guardian](https://github.com/xsa520/guardian)
 
@@ -664,13 +702,22 @@ Specification: [xsa520/guardian](https://github.com/xsa520/guardian)
 
 ## Status
 
-Research implementation for controlled comparability experiments.
+Active research reference implementation.
 
-The concepts are informed by an internally operated governance
-deployment (Alpha System — running since 2026-02-11, RFC3161
-evidence chain, 77+ replay cycles, internal only) and
-replay-based evaluation. Decifact itself remains scoped to
-research, specification development, and controlled reference use.
+Decifact has been exercised through controlled internal experiments
+and reference-environment evaluations. These exercises inform the
+implementation but do not constitute external production
+certification or proof that all seven governance layers are
+operationalized.
+
+The current `/compare` classification uses a Phase 1
+`policy_reference` equality proxy for shared-reference detection.
+Known implementation limitations are recorded in
+`docs/implementation-items.md`.
+
+Internal research use began in 2026 (Alpha System, RFC3161 evidence
+chain). This describes the origin of the implementation, not
+external production validation.
 
 It is not a production authorization, execution, or
 runtime-governance service.
