@@ -18,6 +18,12 @@ class InvocationRecord(BaseModel):
 
 class CaseAdmission(BaseModel):
     declared_relationship: Literal[
-        "none", "protected_rule_ref", "RAO_officer_flagged"
+        "none",
+        # Existing ABAN historical values
+        "protected_rule_ref",
+        "RAO_officer_flagged",
+        # Cross-domain experiment values
+        "declared_reference",
+        "flagged_authority",
     ]
     invocation_record: Optional[InvocationRecord] = None

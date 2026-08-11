@@ -1,0 +1,51 @@
+{
+  "VB-2_compare_probe_outside_fixture": {
+    "method": "POST /compare",
+    "payload_source": "vb-2 comparison section only (no case_admission wrapper)",
+    "classification": "FORMALLY_INCOMPARABLE",
+    "fracture_boundary": [
+      "no_shared_canonical_reference",
+      "no_governing_condition_translation_defined"
+    ]
+  },
+  "admission_none_blocks_compare": {
+    "method": "POST /admit-and-compare",
+    "payload": {
+      "case_admission": {
+        "declared_relationship": "none"
+      },
+      "comparison": {
+        "runtime_a": {
+          "decision": {
+            "assurance": "PASS",
+            "product_id": "vendor-product-001"
+          },
+          "authority_context": {
+            "authority_domain": "vendor_assurance",
+            "policy_reference": "SHARED-PROCUREMENT-ASSURANCE-REF-2026-v1",
+            "execution_context": "vendor_release_security_review",
+            "admissibility_scope": "critical_supplier_onboarding",
+            "governing_condition": "Critical vulnerability remediation SLA <= 72 hours",
+            "governing_condition_translation_ref": null
+          }
+        },
+        "runtime_b": {
+          "decision": {
+            "acceptance": "FAIL",
+            "product_id": "vendor-product-001"
+          },
+          "authority_context": {
+            "authority_domain": "buyer_acceptance",
+            "policy_reference": "SHARED-PROCUREMENT-ASSURANCE-REF-2026-v1",
+            "execution_context": "vendor_release_security_review",
+            "admissibility_scope": "critical_supplier_onboarding",
+            "governing_condition": "Critical vulnerability remediation SLA <= 72 hours",
+            "governing_condition_translation_ref": null
+          }
+        }
+      }
+    },
+    "compare_invoked": false,
+    "finding": "COORDINATION_NOT_CONSTITUTED"
+  }
+}

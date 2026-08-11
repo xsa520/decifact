@@ -1,0 +1,9 @@
+{
+  "status_code": 200,
+  "body": {
+    "passed": false,
+    "finding": "COORDINATION_NOT_CONSTITUTED",
+    "sub_reason": "no_relationship_declared",
+    "compare_invoked": false
+  }
+}

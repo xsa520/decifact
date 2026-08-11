@@ -1,0 +1,19 @@
+{
+  "status_code": 200,
+  "body": {
+    "comparability_classification": "FORMALLY_INCOMPARABLE",
+    "canonical_equivalent": false,
+    "governance_equivalent": false,
+    "fracture_boundary": [
+      "no_shared_canonical_reference",
+      "no_governing_condition_translation_defined"
+    ],
+    "canonical_hash_a": "f7f7d7da7d639784d64bdc4adbeaa3f57522e1bc0ba3cd48526648e4a6e15400",
+    "canonical_hash_b": "4a33d87e33be539a9337ed108f511b0ee3caad519fd086d7ca1c88c204d9cbe6",
+    "boundary_context_hash_a": "8308703cdbe9b3d8ec406eb0e7d7d185369c73ec323f379d6855b718e1669b6b",
+    "boundary_context_hash_b": "aab1c485a7cdea517094171b41c318223d178ff206cb3c9838b9238f3c8300c8",
+    "replayable": true,
+    "sovereignty_principle": "canonical boundary must exist before layer instantiation",
+    "compare_invoked": true
+  }
+}

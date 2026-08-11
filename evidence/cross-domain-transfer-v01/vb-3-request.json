@@ -1,0 +1,53 @@
+{
+  "case_admission": {
+    "declared_relationship": "declared_reference",
+    "invocation_record": {
+      "invoked_by": "vendor-buyer-coordination-node-01",
+      "authority_reference": "formal-agreement://sow-msa-critical-supplier-2026-v1",
+      "invocation_reason": "Signed SOW establishes vendor assurance participation in buyer acceptance review.",
+      "timestamp": "2026-08-11T09:00:00Z",
+      "sign_off": [
+        {
+          "authorized_by": "procurement-manager-014",
+          "role": "Procurement Manager",
+          "authorized_at": "2026-08-11T09:05:00Z"
+        },
+        {
+          "authorized_by": "security-risk-acceptance-lead-022",
+          "role": "Security / Risk Acceptance Lead",
+          "authorized_at": "2026-08-11T09:10:00Z"
+        }
+      ]
+    }
+  },
+  "comparison": {
+    "runtime_a": {
+      "decision": {
+        "assurance": "PASS",
+        "product_id": "vendor-product-001"
+      },
+      "authority_context": {
+        "authority_domain": "vendor_assurance",
+        "policy_reference": "SHARED-PROCUREMENT-ASSURANCE-REF-2026-v1",
+        "execution_context": "vendor_release_security_review",
+        "admissibility_scope": "critical_supplier_onboarding",
+        "governing_condition": "Critical vulnerability remediation SLA <= 72 hours",
+        "governing_condition_translation_ref": null
+      }
+    },
+    "runtime_b": {
+      "decision": {
+        "acceptance": "FAIL",
+        "product_id": "vendor-product-001"
+      },
+      "authority_context": {
+        "authority_domain": "buyer_acceptance",
+        "policy_reference": "SHARED-PROCUREMENT-ASSURANCE-REF-2026-v1",
+        "execution_context": "vendor_release_security_review",
+        "admissibility_scope": "critical_supplier_onboarding",
+        "governing_condition": "Critical vulnerability remediation SLA <= 72 hours",
+        "governing_condition_translation_ref": null
+      }
+    }
+  }
+}

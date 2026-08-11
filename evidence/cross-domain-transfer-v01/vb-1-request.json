@@ -1,0 +1,35 @@
+{
+  "case_admission": {
+    "declared_relationship": "none"
+  },
+  "comparison": {
+    "runtime_a": {
+      "decision": {
+        "assurance": "PASS",
+        "product_id": "vendor-product-001"
+      },
+      "authority_context": {
+        "authority_domain": "vendor_assurance",
+        "policy_reference": "VENDOR-SEC-ASSURANCE-POLICY-2026-v1",
+        "execution_context": "vendor_release_security_review",
+        "admissibility_scope": "critical_supplier_onboarding",
+        "governing_condition": "release-security remediation gate satisfied",
+        "governing_condition_translation_ref": null
+      }
+    },
+    "runtime_b": {
+      "decision": {
+        "acceptance": "REJECT",
+        "product_id": "vendor-product-001"
+      },
+      "authority_context": {
+        "authority_domain": "buyer_acceptance",
+        "policy_reference": "BUYER-CRITICAL-SUPPLIER-ACCEPTANCE-2026-v1",
+        "execution_context": "buyer_resilience_acceptance_review",
+        "admissibility_scope": "critical_supplier_onboarding",
+        "governing_condition": "resilience acceptance threshold not met",
+        "governing_condition_translation_ref": null
+      }
+    }
+  }
+}

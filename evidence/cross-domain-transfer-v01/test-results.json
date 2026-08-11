@@ -1,0 +1,53 @@
+{
+  "evidence_type": "CROSS_DOMAIN_ADMISSION_TRANSFER_V01",
+  "captured_at_utc": "2026-08-11T13:48:00Z",
+  "source_branch": "experiment/cross-domain-admission-transfer-v01",
+  "frozen_aban_parent_commit": "f4e0e69dfa97dfb3caee56893fee5e173f05f9b0",
+  "pre_edit_baseline": {
+    "branch": "feature/aban-admission-wrapper-v03",
+    "commit": "f4e0e69dfa97dfb3caee56893fee5e173f05f9b0",
+    "tests_passed": 41,
+    "tests_failed": 0,
+    "prior_documented_expectation": 38,
+    "baseline_discrepancy_note": "Prior external review documented 38 passing tests. This experiment independently observed 41 passing tests on the frozen parent commit before any experimental edits. The discrepancy is preserved as evidence; numbers were not reconciled."
+  },
+  "post_experiment_regression": {
+    "historical_aban_admission_tests": {
+      "command": "pytest -q tests/test_admission_wrapper.py",
+      "count": 7,
+      "passed": 7,
+      "failed": 0,
+      "exit_code": 0
+    },
+    "historical_fracture_label_isolation_tests": {
+      "command": "pytest -q tests/test_fracture_label_isolation.py",
+      "count": 17,
+      "passed": 17,
+      "failed": 0,
+      "exit_code": 0
+    },
+    "new_vendor_buyer_transfer_tests": {
+      "command": "pytest -q tests/test_cross_domain_admission_transfer_v01.py",
+      "count": 10,
+      "passed": 10,
+      "failed": 0,
+      "exit_code": 0
+    },
+    "combined_aban_fracture_vb_subset": {
+      "command": "pytest -q tests/test_admission_wrapper.py tests/test_fracture_label_isolation.py tests/test_cross_domain_admission_transfer_v01.py",
+      "count": 34,
+      "passed": 34,
+      "failed": 0,
+      "exit_code": 0
+    },
+    "full_repository_suite": {
+      "command": "pytest -q",
+      "count": 51,
+      "passed": 51,
+      "failed": 0,
+      "exit_code": 0,
+      "duration_seconds_approx": 5.59
+    }
+  },
+  "failures": []
+}

@@ -1,0 +1,16 @@
+{
+  "status_code": 200,
+  "body": {
+    "comparability_classification": "NON_EQUIVALENT",
+    "canonical_equivalent": false,
+    "governance_equivalent": false,
+    "fracture_boundary": [],
+    "canonical_hash_a": "f7f7d7da7d639784d64bdc4adbeaa3f57522e1bc0ba3cd48526648e4a6e15400",
+    "canonical_hash_b": "a86367984504e7bc865653ae38c3da0e93f0957f34e7bed1cb7eb2791f74f5fd",
+    "boundary_context_hash_a": "b9390d69018f264280bfb48f366e12c522e39955e29839bce73c2dcac111606d",
+    "boundary_context_hash_b": "311894736887bbc64f5287ebf73581bb5ee31d3274050704618c72d8c9505bff",
+    "replayable": true,
+    "sovereignty_principle": "canonical boundary must exist before layer instantiation",
+    "compare_invoked": true
+  }
+}
