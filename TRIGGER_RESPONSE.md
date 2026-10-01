@@ -16,3 +16,12 @@ comparison that found non-equivalence.
 A Decifact result describes a relationship between judgments. It does
 not establish correctness, reliance authority, execution
 admissibility, or runtime permission.
+
+`HOLD` is an admission/readiness disposition, not a comparison
+classification.
+
+An input held before comparison has not been classified as equivalent,
+non-equivalent, or formally incomparable.
+
+That disposition is specification-only. The current comparison path
+does not return `HOLD`.

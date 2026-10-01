@@ -245,6 +245,165 @@ that result.
 
 ---
 
+## Architecture Boundary — Judgment Constitution / Readiness
+
+**Specification only; not yet implemented.**
+
+This boundary sits before Layer 3 comparison determination. It does
+not add a governance layer, renumber Layers 1–7, or add a comparison
+outcome. Comparison classification remains `EQUIVALENT`,
+`NON_EQUIVALENT`, or `FORMALLY_INCOMPARABLE`.
+
+> Decifact may coordinate constitution completion, but only the
+> originating governed system may constitute its own substantive
+> judgment.
+
+### Readiness states
+
+**`INCOMPLETE`**
+
+The originating output lacks one or more required constitution
+elements, such as:
+
+- governed or evaluated object or referent
+- substantive judgment or output
+- governing source
+- originating authority
+- evidence basis
+- scope
+- temporal or effective state
+
+Disposition: completion must come from the originating governed
+system.
+
+**`STRUCTURALLY_COMPLETE`**
+
+Required fields are populated, but provenance, currentness, authority
+correspondence, evidence support, or reconstruction against the
+originating system has not yet been sufficiently established.
+
+Default disposition: `HOLD`.
+
+> A judgment that is STRUCTURALLY_COMPLETE but not yet
+> VERIFIED_CONSTITUTED defaults to HOLD, not to assumed validity and
+> not to assumed invalidity.
+
+Structural completeness alone is not comparison readiness.
+`STRUCTURALLY_COMPLETE` is not `VERIFIED_CONSTITUTED`.
+`STRUCTURALLY_COMPLETE` defaults to `HOLD`.
+
+**`VERIFIED_CONSTITUTED`**
+
+The required constitution elements are not merely populated, but
+sufficiently reconstructable against the originating system's own
+governing basis, evidence, authority, scope, temporal conditions, and
+relevant system state.
+
+Only `VERIFIED_CONSTITUTED` judgments are eligible to proceed toward
+comparability admission. `VERIFIED_CONSTITUTED` is an admission
+prerequisite, not a comparison outcome.
+
+### `HOLD`
+
+`HOLD` is an admission/readiness disposition, not a comparison
+classification.
+
+`HOLD` is not failure. `HOLD` is not `FORMALLY_INCOMPARABLE`. An
+input held before comparison has not been classified as `EQUIVALENT`,
+`NON_EQUIVALENT`, or `FORMALLY_INCOMPARABLE`.
+
+### Conceptual flow
+
+```
+originating system output
+    ->
+constitution/readiness assessment
+    ->
+INCOMPLETE
+    or
+STRUCTURALLY_COMPLETE -> HOLD
+    or
+VERIFIED_CONSTITUTED
+    ->
+comparability admission
+    ->
+comparison determination
+    ->
+EQUIVALENT / NON_EQUIVALENT / FORMALLY_INCOMPARABLE
+```
+
+### Evidence discipline
+
+Self-report is not verification.
+
+claimed != accessed != inspected != validated
+
+If an agent states that it used Policy X, Authority Y, or Evidence Z,
+that statement is only a claim until the relevant basis is
+reconstructable or inspectable. Evidence is not authority. Capability
+is not authority.
+
+The current implementation does not perform this readiness
+verification. Request validation may establish that required schema
+fields are present, including empty strings, and `decision` remains
+an unconstrained object. Field presence is not verified constitution.
+There is no executable `INCOMPLETE`, `STRUCTURALLY_COMPLETE`,
+`VERIFIED_CONSTITUTED`, or `HOLD` state machine. A request accepted
+by the current schema still proceeds into Phase 1 comparison.
+Shared-reference detection remains exact `policy_reference` equality.
+`replayable: true` remains a static marker, not executed
+reconstruction. Existing examples in this repository are not
+retroactively `VERIFIED_CONSTITUTED`.
+
+### Allowed behavior
+
+Under this specification, Decifact may:
+
+- detect that an input is not sufficiently constituted for comparison
+- identify missing constitution fields
+- expose or describe a bounded readiness status
+- request that the originating system supply its own missing basis
+- preserve provenance and origin separation
+- distinguish structural completeness from verified constitution
+- hold unverified inputs before comparison
+- normalize already constituted judgments into comparison-ready form
+  without changing their substantive meaning
+- admit only sufficiently constituted judgments into comparison
+
+### Prohibited behavior
+
+Decifact must not:
+
+- choose the originating system's substantive judgment
+- infer or manufacture a missing judgment
+- borrow another system's governing source
+- borrow another system's authority
+- borrow another system's evidence
+- borrow another system's conclusion
+- use majority voting to fill a missing judgment
+- use semantic similarity to infer missing governing content
+- silently repair authority or currentness gaps
+- convert `STRUCTURALLY_COMPLETE` into `VERIFIED_CONSTITUTED` merely
+  because fields are present
+- collapse judgment generation, governing-basis interpretation, and
+  comparison determination into one function
+
+A comparison classification is not reliance permission and is not
+execution authorization. Decifact remains a comparison system, not a
+judgment generator.
+
+### Product status
+
+Judgment Constitution / Readiness is a supporting pre-comparability
+capability. It is not a standalone market wedge, not independent
+demand validation, and not a new primary product.
+
+Its Decifact-specific role is the admission boundary into
+cross-system comparison, not generic schema completion,
+observability, provenance, or audit tooling.
+
+---
+
 ## Where Decifact Sits
 
 ```
@@ -397,6 +556,8 @@ Whether that relationship remains stable as either system evolves — new polici
 Comparability does not determine whether a decision, or the governance conditions surrounding it, can be independently reconstructed at a later time.
 
 That is a different question from comparability itself.
+
+Judgment Constitution / Readiness is a separate pre-comparability specification boundary, documented above. It is specification-only. The current comparison result does not verify reconstruction.
 
 ### Execution
 
