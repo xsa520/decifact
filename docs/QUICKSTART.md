@@ -47,6 +47,12 @@ Is this a disagreement — or an incomparability?
 >
 > Classification result ≠ permission to rely or execute.
 
+### Before comparison
+
+Architecturally, before comparison, Decifact is intended to assess whether each input represents a sufficiently constituted and reconstructable judgment. Inputs that are structurally complete but not sufficiently verified should be held rather than silently completed, assumed valid, or treated as comparable.
+
+Current implementation status: this readiness stage is specification-only and is not yet enforced by the executable Phase 1 comparison path.
+
 ## 4. Quickstart (5 minutes)
 
 The example below runs Scenario A (Hospital Triage) — two independently approved systems being checked against each other before coordination begins.

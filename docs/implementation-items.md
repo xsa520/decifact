@@ -210,3 +210,51 @@ detection, this item tracks:
 reference translation. It only tracks how the response model should
 represent *which* detection mechanism produced a given result, if
 and when that mechanism changes.
+
+---
+
+## Item 5 — Judgment Constitution / Readiness
+
+**Status:** DEFERRED — not yet implemented. Not scheduled, and not a
+committed roadmap item.
+
+**Specification:**
+
+`README.md` records a pre-comparability architecture boundary under
+"Architecture Boundary — Judgment Constitution / Readiness". The
+current executable path does not enforce it.
+
+**Current behavior:**
+
+- `/compare` returns only `EQUIVALENT`, `NON_EQUIVALENT`, or
+  `FORMALLY_INCOMPARABLE`.
+- Shared-reference detection remains the Phase 1 exact
+  `policy_reference` equality proxy. This item does not change that
+  proxy.
+- `replayable: true` remains a static marker. The implementation does
+  not perform independent reconstruction or verification.
+- Request validation establishes structural presence only. Empty
+  strings and an unconstrained `decision` object remain able to pass
+  schema acceptance, and accepted requests still proceed into Phase 1
+  comparison.
+- There is no executable `INCOMPLETE`, `STRUCTURALLY_COMPLETE`,
+  `VERIFIED_CONSTITUTED`, or `HOLD` state machine.
+- Existing examples are not `VERIFIED_CONSTITUTED` records.
+
+**Future fail-closed semantics, if a later implementation is
+separately authorized:**
+
+- missing constitution basis -> not comparison-admissible
+- `STRUCTURALLY_COMPLETE` but unverified -> `HOLD` / not
+  comparison-admissible
+- only `VERIFIED_CONSTITUTED` -> eligible for comparison
+
+`HOLD` would remain an admission/readiness disposition. It must not
+be mapped to failure or to `FORMALLY_INCOMPARABLE`.
+`VERIFIED_CONSTITUTED` would remain an admission prerequisite, not a
+comparison outcome.
+
+**Non-goal for this item:** Do not add readiness code, tests, or
+runtime enforcement in the same pass as this record. Do not change
+Phase 1 proxy behavior, the three comparison classifications, or
+`replayable`. Do not treat field presence as verified constitution.
